@@ -1,10 +1,31 @@
+import AsnwerQuestion from '@/components/AsnwerQuestion'
 import HeroSlider from '@/components/HeroSlider'
-import React from 'react'
+import InterestedInRenting from '@/components/InterestedInRenting'
+import OtherServices from '@/components/OtherServices'
+import OurBlog from '@/components/OurBlog'
+import Rentax from '@/components/Rentax'
+import RentNow from '@/components/RentNow'
+import SelectCarWithCategory from '@/components/SelectCarWithCategory'
+import SelectCarWithName from '@/components/SelectCarWithName'
+import { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: "HomePage | Renting Cars",
+  description:
+    "You can find any car here",
+};
 const HomePage = () => {
   return (
     <section>
       <HeroSlider/>
+      <Rentax/>
+      <RentNow/>
+      <SelectCarWithName/>
+      <SelectCarWithCategory/>
+      <OtherServices/>
+      <AsnwerQuestion/>
+      <OurBlog/>
+      <InterestedInRenting/>
     </section>
   )
 }
