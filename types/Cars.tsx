@@ -1,0 +1,43 @@
+export interface Cars {
+    id: string,
+    brand_id: string,
+    color_id: string,
+    category_id: string,
+    model: string,
+    year: number,
+    fuel_type: string,
+    transmission: string,
+    engine: string,
+    horsepower: number,
+    seats: number,
+    doors: number,
+    mileage: number,
+    drive_type: string,
+    air_conditioning: boolean,
+    bluetooth: boolean,
+    gps: boolean,
+    parking_sensors: boolean,
+    rear_camera: boolean,
+    cruise_control: boolean,
+    price_per_day: number,
+    price_per_week: number,
+    price_per_month: number,
+    deposit: number,
+    min_rent_days: number,
+    images: [
+      string
+    ],
+    videos: [
+      string
+    ],
+    city: string,
+    location: string,
+    latitude: number,
+    longitude: number,
+    is_available: boolean,
+    is_featured: boolean,
+    description: string,
+    status: string,
+    created_at: string,
+    updated_at: string
+  }
