@@ -38,7 +38,7 @@ const HeroSlideMedia = ({ car }: { car: Cars }) => {
 
   const imageUrl = car.images?.[0]
   if (imageUrl) {
-    return <img src={imageUrl} alt={car.model} className="absolute inset-0 h-full w-full object-cover" />
+    return <img src={imageUrl} alt={car.model} className="absolute inset-0 h-100 w-full object-cover" />
   }
 
   return <div className="absolute inset-0 bg-zinc-900" />

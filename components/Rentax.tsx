@@ -1,15 +1,14 @@
-import React from 'react'
 import Container from './Container'
-import RentaxText from './RentaxText'
 import RentaxCard from './RentaxCard'
+import RentaxText from './RentaxText'
 
 const Rentax = () => {
   return (
-    <section className='bg-[#1a1a1a] w-full'>
+    <section className="w-full bg-[#1f1e1d] py-16 sm:py-20 lg:py-24">
       <Container className=''>
-        <div className='py-20 flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16'>
-            <RentaxText/>
-            <RentaxCard/>
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(320px,520px)] lg:gap-16 xl:gap-20">
+          <RentaxText />
+          <RentaxCard />
         </div>
       </Container>
     </section>

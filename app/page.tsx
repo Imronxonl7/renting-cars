@@ -1,3 +1,4 @@
+import { connection } from 'next/server'
 import AsnwerQuestion from '@/components/AsnwerQuestion'
 import HeroSlider from '@/components/HeroSlider'
 import InterestedInRenting from '@/components/InterestedInRenting'
@@ -14,7 +15,9 @@ export const metadata: Metadata = {
   description:
     "You can find any car here",
 };
-const HomePage = () => {
+const HomePage = async () => {
+  await connection()
+
   return (
     <section>
       <HeroSlider/>

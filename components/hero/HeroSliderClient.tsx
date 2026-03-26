@@ -8,7 +8,7 @@ import HeroSlideMedia from './HeroSlideMedia'
 import { Cars } from '@/types/Cars'
 import { Categories } from '@/types/Categories'
 
-const SLIDE_DURATION_MS = 30000
+const SLIDE_DURATION_MS = 30000 
 
 type HeroSliderClientProps = {
   cars: Cars[]
@@ -74,8 +74,8 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
   const prev = prevIndex !== null ? cars[prevIndex] : null
 
   return (
-    <section className="relative w-full overflow-hidden bg-black min-h-220 sm:min-h-235 lg:min-h-245 xl:min-h-screen">
-      <div className="absolute inset-0">
+    <section className="relative z-20 w-full overflow-x-hidden overflow-y-visible bg-black min-h-[720px] sm:min-h-[760px] lg:min-h-[860px] xl:min-h-[900px] 2xl:min-h-[980px]">
+      <div className="absolute inset-0 overflow-visible">
         {prev && (
           <div
             key={`prev-${prevIndex}`}
@@ -93,9 +93,9 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
           <div className="absolute inset-0 z-10 bg-black/50" />
         </div>
 
-        <div className="absolute inset-0 z-30 flex flex-col justify-start pt-32 sm:pt-36 lg:pt-40 xl:pt-44">
+        <div className="absolute inset-0 z-30 flex flex-col justify-start pt-22 sm:pt-24 md:pt-28 lg:pt-24 xl:pt-26 2xl:pt-30">
           <Container className="">
-            <div className="max-w-2xl xl:max-w-3xl">
+            <div className="max-w-xl sm:max-w-2xl xl:max-w-3xl">
               <Anim visible={textVisible} delay={0}>
                 <p className="mb-3 flex items-center gap-2 text-xs font-semibold tracking-widest text-[#edb458] uppercase">
                   <span className="h-px w-6 bg-[#edb458]" />
@@ -105,15 +105,14 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
 
               <Anim visible={textVisible} delay={60}>
                 <h1
-                  className="mb-2 text-white line-clamp-1 font-black leading-none"
-                  style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)' }}
+                  className="mb-2 line-clamp-2 text-[clamp(2.5rem,7vw,6.5rem)] font-black leading-[0.95] text-white"
                 >
                   {current.model}
                 </h1>
               </Anim>
 
               <Anim visible={textVisible} delay={120}>
-                <p className="mb-4 flex flex-wrap items-center gap-x-3 text-lg font-medium text-[#edb458]">
+                <p className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium text-[#edb458] sm:text-base lg:text-lg">
                   {current.transmission && <span>{current.transmission}</span>}
                   {current.transmission && current.fuel_type && (
                     <span className="text-[#edb458]/40">·</span>
@@ -129,27 +128,26 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
               </Anim>
 
               <Anim visible={textVisible} delay={180}>
-                <p className="mb-5 max-w-lg text-sm leading-relaxed text-white/60 line-clamp-3 sm:text-base sm:leading-8">
+                <p className="mb-5 max-w-md text-sm leading-6 text-white/60 line-clamp-3 sm:max-w-lg sm:text-base sm:leading-7">
                   {current.description}
                 </p>
               </Anim>
 
               <Anim visible={textVisible} delay={300}>
-                <div className="mb-6 flex flex-wrap gap-3">
+                <div className="mb-5 flex flex-wrap gap-3 lg:mb-6">
                   <button
-                    className="flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95"
-                    style={{ backgroundColor: '#edb458' }}
+                    className="flex items-center gap-2 rounded-full bg-[#edb458] px-5 py-3 text-sm font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 sm:px-6"
                   >
                     Ijaraga olish <ArrowIcon />
                   </button>
-                  <button className="flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-bold text-white transition-all duration-200 hover:border-[#edb458] hover:text-[#edb458] active:scale-95">
+                  <button className="flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition-all duration-200 hover:border-[#edb458] hover:text-[#edb458] active:scale-95 sm:px-6">
                     Batafsil <ArrowIcon />
                   </button>
                 </div>
               </Anim>
 
               <Anim visible={textVisible} delay={360}>
-                <div className="flex flex-wrap gap-4 sm:gap-6">
+                <div className="flex flex-wrap gap-4 sm:gap-5 lg:gap-6">
                   {current.seats && (
                     <HeroMiniSpec icon="seat" label="O'rindiqlar" value={`${current.seats} ta`} />
                   )}
@@ -168,14 +166,17 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
         <ArrowBtn onClick={() => goTo((currentIndex - 1 + cars.length) % cars.length)} dir="left" />
         <ArrowBtn onClick={() => goTo((currentIndex + 1) % cars.length)} dir="right" />
 
-        <div className="absolute bottom-52 left-0 right-0 z-30 px-5 sm:bottom-48 lg:bottom-44 xl:bottom-40">
-          <div className="mx-auto flex max-w-5xl items-center justify-center gap-3 xl:justify-between">
+        <div className="absolute bottom-38 left-0 right-0 z-30 px-4 sm:bottom-42 sm:px-5 lg:bottom-46 xl:bottom-44">
+          <div className="mx-auto flex max-w-5xl items-center justify-center gap-3 lg:gap-4 xl:justify-between">
             <div className="hidden w-16 xl:block" />
-            <div className="flex max-w-[70vw] items-center gap-1.5 overflow-hidden">
+            <div className="flex max-w-[62vw] items-center gap-1.5 overflow-hidden sm:max-w-[66vw] lg:max-w-[70vw]">
               {cars.map((_, index) => (
                 <button
+                  type="button"
                   key={index}
                   onClick={() => goTo(index)}
+                  aria-label={`${index + 1}-slaydga o'tish`}
+                  aria-current={index === currentIndex ? 'true' : undefined}
                   className={`rounded-full transition-all duration-300 ${
                     index === currentIndex
                       ? 'h-1.5 w-5 bg-[#edb458]'
@@ -206,20 +207,36 @@ const Anim = ({
   delay: number
 }) => (
   <div
-    style={{
-      transform: visible ? 'translateY(0)' : 'translateY(40px)',
-      opacity: visible ? 1 : 0,
-      transition: 'transform 0.65s ease, opacity 0.65s ease',
-      transitionDelay: `${delay}ms`,
-    }}
+    className={`${visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} transition-all duration-700 ease-out ${delayClassName(delay)}`}
   >
     {children}
   </div>
 )
 
+const delayClassName = (delay: number) => {
+  switch (delay) {
+    case 0:
+      return 'delay-0'
+    case 60:
+      return '[transition-delay:60ms]'
+    case 120:
+      return '[transition-delay:120ms]'
+    case 180:
+      return '[transition-delay:180ms]'
+    case 300:
+      return '[transition-delay:300ms]'
+    case 360:
+      return '[transition-delay:360ms]'
+    default:
+      return ''
+  }
+}
+
 const ArrowBtn = ({ onClick, dir }: { onClick: () => void; dir: 'left' | 'right' }) => (
   <button
+    type="button"
     onClick={onClick}
+    aria-label={dir === 'left' ? 'Oldingi slayd' : 'Keyingi slayd'}
     className={`absolute ${dir === 'left' ? 'left-4 sm:left-5 lg:left-7' : 'right-4 sm:right-5 lg:right-7'} top-[54%] z-30 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 text-white backdrop-blur-sm transition-all duration-200 hover:border-[#edb458] hover:text-[#edb458] md:flex xl:h-12 xl:w-12`}
   >
     <svg

@@ -46,7 +46,7 @@ function Calendar({
         today.getFullYear() === year;
 
     return (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 bg-[#1c1c1c] border border-white/10 rounded-xl shadow-2xl p-4 w-[260px]">
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-50 bg-[#1c1c1c] border border-white/10 rounded-xl shadow-2xl p-4 w-65">
             <div className="flex items-center justify-between mb-3">
                 <button
                     onClick={() => setCurrent(new Date(year, month - 1, 1))}
@@ -86,7 +86,7 @@ function Calendar({
                         className={`
                             text-center text-[12px] py-1.5 rounded-lg transition-colors leading-none
                             ${cell.type !== "cur" ? "text-white/20 cursor-default" : "text-white hover:bg-white/10 cursor-pointer"}
-                            ${isSelected(cell.day) && cell.type === "cur" ? "!bg-[#F5A623] !text-black font-bold" : ""}
+                            ${isSelected(cell.day) && cell.type === "cur" ? "bg-[#F5A623]! text-black! font-bold" : ""}
                             ${isToday(cell.day) && cell.type === "cur" && !isSelected(cell.day) ? "border border-[#F5A623]/60" : ""}
                         `}
                     >
@@ -125,7 +125,7 @@ export default function DatePicker({ placeholder }: { placeholder: string }) {
                 <span className={`text-sm ${date ? "text-white" : "text-white/50"}`}>
                     {date ? formatDate(date) : placeholder}
                 </span>
-                <svg className="w-4 h-4 flex-shrink-0 text-[#F5A623]" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 shrink-0 text-[#F5A623]" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z" />
                 </svg>
             </div>
