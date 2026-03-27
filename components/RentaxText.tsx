@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const features = ['Sports and Luxury Cars', 'Economy Cars']
 
 const RentaxText = () => {
@@ -47,9 +49,9 @@ const RentaxText = () => {
         ))}
       </ul>
 
-      <button
-        type="button"
-        className="inline-flex items-center gap-2 rounded-full bg-[#edb458] px-8 py-4 text-sm font-bold text-[#1f1e1d] transition-colors duration-200 hover:bg-[#ddb04b]"
+      <Link
+        href="/about"
+        className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#edb458] px-8 py-4 text-sm font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-white hover:text-[#edb458]"
       >
         Read More
         <svg
@@ -65,7 +67,7 @@ const RentaxText = () => {
             strokeLinejoin="round"
           />
         </svg>
-      </button>
+      </Link>
     </div>
   )
 }

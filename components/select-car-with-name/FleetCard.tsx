@@ -73,8 +73,8 @@ const FleetCard = ({
 
         <div className="flex items-center justify-between gap-4">
           <Link
-            href={`/cars?model=${encodeURIComponent(car.model)}`}
-            className="inline-flex items-center rounded-full bg-[#edb458] px-5 py-2.5 text-sm font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-[#ddb04b]"
+            href={`/cars/${encodeURIComponent(car.id)}`}
+            className="inline-flex items-center cursor-pointer rounded-full bg-[#edb458] px-5 py-2.5 text-sm font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-[#ddb04b]"
           >
             Details
           </Link>

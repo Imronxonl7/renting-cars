@@ -1,5 +1,6 @@
 "use client"
 
+import Link from 'next/link'
 import { ReactNode, useEffect, useRef, useState } from 'react'
 import Container from '../Container'
 import HeroBookingBar from './HeroBookingBar'
@@ -18,20 +19,24 @@ type HeroSliderClientProps = {
 const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [prevIndex, setPrevIndex] = useState<number | null>(null)
+  const [textIndex, setTextIndex] = useState(0)
   const [animating, setAnimating] = useState(false)
   const [textVisible, setTextVisible] = useState(true)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const textTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  const restartTextAnimation = () => {
+  const transitionTextTo = (index: number) => {
     if (textTimeoutRef.current) clearTimeout(textTimeoutRef.current)
     setTextVisible(false)
-    textTimeoutRef.current = setTimeout(() => setTextVisible(true), 120)
+    textTimeoutRef.current = setTimeout(() => {
+      setTextIndex(index)
+      setTextVisible(true)
+    }, 220)
   }
 
   const goTo = (index: number) => {
     if (animating || index === currentIndex) return
-    restartTextAnimation()
+    transitionTextTo(index)
     setPrevIndex(currentIndex)
     setAnimating(true)
     setCurrentIndex(index)
@@ -42,7 +47,7 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
 
     intervalRef.current = setInterval(() => {
       const nextIndex = (currentIndex + 1) % cars.length
-      restartTextAnimation()
+      transitionTextTo(nextIndex)
       setPrevIndex(currentIndex)
       setAnimating(true)
       setCurrentIndex(nextIndex)
@@ -65,13 +70,16 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
     const timeoutId = setTimeout(() => {
       setPrevIndex(null)
       setAnimating(false)
-    }, 700)
+    }, 900)
 
     return () => clearTimeout(timeoutId)
   }, [animating])
 
   const current = cars[currentIndex]
   const prev = prevIndex !== null ? cars[prevIndex] : null
+  const currentTextCar = cars[textIndex] ?? current
+  const currentCategory =
+    categories.find((category) => category.id === currentTextCar.category_id)?.name || 'Luxury'
 
   return (
     <section className="relative z-20 w-full overflow-x-hidden overflow-y-visible bg-black min-h-180 sm:min-h-190 lg:min-h-215 xl:min-h-225 2xl:min-h-245">
@@ -87,7 +95,7 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
 
         <div
           key={`current-${currentIndex}`}
-          className={`absolute inset-0 z-20 transition-opacity duration-700 ${animating ? 'opacity-0' : 'opacity-100'}`}
+          className={`absolute inset-0 z-20 transition-opacity duration-900 ease-[cubic-bezier(0.22,1,0.36,1)] ${animating ? 'opacity-0' : 'opacity-100'}`}
         >
           <HeroSlideMedia car={current} />
           <div className="absolute inset-0 z-10 bg-black/50" />
@@ -99,63 +107,67 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
               <Anim visible={textVisible} delay={0}>
                 <p className="mb-3 flex items-center gap-2 text-xs font-semibold tracking-widest text-[#edb458] uppercase">
                   <span className="h-px w-6 bg-[#edb458]" />
-                  PREMIUM
+                  {currentCategory}
                 </p>
               </Anim>
 
-              <Anim visible={textVisible} delay={60}>
+              <Anim visible={textVisible} delay={60} variant="drop">
                 <h1
                   className="mb-2 line-clamp-2 text-[clamp(2.5rem,7vw,6.5rem)] font-black leading-[0.95] text-white"
                 >
-                  {current.model}
+                  {currentTextCar.model}
                 </h1>
               </Anim>
 
-              <Anim visible={textVisible} delay={120}>
+              <Anim visible={textVisible} delay={120} variant="rise">
                 <p className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium text-[#edb458] sm:text-base lg:text-lg">
-                  {current.transmission && <span>{current.transmission}</span>}
-                  {current.transmission && current.fuel_type && (
+                  {currentTextCar.transmission && <span>{currentTextCar.transmission}</span>}
+                  {currentTextCar.transmission && currentTextCar.fuel_type && (
                     <span className="text-[#edb458]/40">·</span>
                   )}
-                  {current.fuel_type && <span>{current.fuel_type}</span>}
-                  {current.horsepower && (
+                  {currentTextCar.fuel_type && <span>{currentTextCar.fuel_type}</span>}
+                  {currentTextCar.horsepower && (
                     <>
                       <span className="text-[#edb458]/40">·</span>
-                      <span>{current.horsepower} HP</span>
+                      <span>{currentTextCar.horsepower} HP</span>
                     </>
                   )}
                 </p>
               </Anim>
 
-              <Anim visible={textVisible} delay={180}>
+              <Anim visible={textVisible} delay={180} variant="rise">
                 <p className="mb-5 max-w-md text-sm leading-6 text-white/60 line-clamp-3 sm:max-w-lg sm:text-base sm:leading-7">
-                  {current.description}
+                  {currentTextCar.description}
                 </p>
               </Anim>
 
-              <Anim visible={textVisible} delay={300}>
+              <Anim visible={textVisible} delay={300} variant="rise-soft">
                 <div className="mb-5 flex flex-wrap gap-3 lg:mb-6">
-                  <button
-                    className="flex items-center gap-2 rounded-full bg-[#edb458] px-5 py-3 text-sm font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 sm:px-6"
+                  <Link
+                    href={`/cars/${encodeURIComponent(currentTextCar.id)}#rent-now`}
+                    className="flex items-center gap-2 cursor-pointer rounded-full bg-[#edb458] hover:bg-white hover:text-[#edb458] px-5 py-3 text-sm font-bold text-black transition-all duration-300 hover:brightness-110 active:scale-95 sm:px-6"
                   >
                     Ijaraga olish <ArrowIcon />
-                  </button>
-                  <button className="flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition-all duration-200 hover:border-[#edb458] hover:text-[#edb458] active:scale-95 sm:px-6">
+                  </Link>
+                  <Link
+                    href={`/cars/${encodeURIComponent(currentTextCar.id)}`}
+                    className="flex items-center cursor-pointer gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-[#edb458] hover:text-black active:scale-95 sm:px-6"
+                  >
                     Batafsil <ArrowIcon />
-                  </button>
+                  </Link>
                 </div>
               </Anim>
 
-              <Anim visible={textVisible} delay={360}>
+              <Anim visible={textVisible} delay={360} variant="rise-soft">
                 <div className="flex flex-wrap gap-4 sm:gap-5 lg:gap-6">
-                  {current.seats && (
-                    <HeroMiniSpec icon="seat" label="O'rindiqlar" value={`${current.seats} ta`} />
+                  {currentTextCar.seats && (
+                    <HeroMiniSpec icon="seat" label="O'rindiqlar" value={`${currentTextCar.seats} ta`} />
                   )}
-                  {current.fuel_type && (
-                    <HeroMiniSpec icon="fuel" label="Yoqilg'i" value={current.fuel_type} />
+                  {currentTextCar.fuel_type && (
+                    <HeroMiniSpec icon="fuel" label="Yoqilg'i" value={currentTextCar.fuel_type} />
                   )}
-                  {current.transmission && (
-                    <HeroMiniSpec icon="gear" label="Uzatma" value={current.transmission} />
+                  {currentTextCar.transmission && (
+                    <HeroMiniSpec icon="gear" label="Uzatma" value={currentTextCar.transmission} />
                   )}
                 </div>
               </Anim>
@@ -201,17 +213,32 @@ const Anim = ({
   children,
   visible,
   delay,
+  variant = 'slide-left',
 }: {
   children: ReactNode
   visible: boolean
   delay: number
+  variant?: 'slide-left' | 'drop' | 'rise' | 'rise-soft'
 }) => (
   <div
-    className={`${visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} transition-all duration-700 ease-out ${delayClassName(delay)}`}
+    className={`${visible ? 'translate-x-0 translate-y-0 opacity-100 blur-0' : hiddenStateClassName(variant)} transition-[transform,opacity,filter] duration-980 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${delayClassName(delay)}`}
   >
     {children}
   </div>
 )
+
+const hiddenStateClassName = (variant: 'slide-left' | 'drop' | 'rise' | 'rise-soft') => {
+  switch (variant) {
+    case 'drop':
+      return '-translate-y-3 opacity-0 blur-[2px]'
+    case 'rise':
+      return 'translate-y-3 opacity-0 blur-[2px]'
+    case 'rise-soft':
+      return 'translate-y-2 opacity-0 blur-[1px]'
+    default:
+      return '-translate-x-3 opacity-0 blur-[2px]'
+  }
+}
 
 const delayClassName = (delay: number) => {
   switch (delay) {

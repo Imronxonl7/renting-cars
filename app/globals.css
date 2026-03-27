@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+.faq-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.faq-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}

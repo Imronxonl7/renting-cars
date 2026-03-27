@@ -59,19 +59,19 @@ export default function ServicesSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#0d0d0d] px-6 py-20">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(200,146,42,0.8)_1px,transparent_0)] bg-size-[40px_40px] opacity-[0.025]" />
+    <section className="relative w-full overflow-hidden bg-[#1f1e1d] px-6 py-20">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(237,180,88,0.8)_1px,transparent_0)] bg-size-[40px_40px] opacity-[0.025]" />
 
       <div className="mb-10 flex justify-center">
-        <div className="h-14 w-px bg-[linear-gradient(to_bottom,transparent,#C8922A,transparent)]" />
+        <div className="h-14 w-px bg-[linear-gradient(to_bottom,transparent,#edb458,transparent)]" />
       </div>
 
       <div className="mb-14 text-center">
-        <p className="mb-3 text-xs font-bold tracking-[0.3em] text-[#C8922A] uppercase">
+        <p className="mb-3 text-xs font-bold tracking-[0.3em] text-[#edb458] uppercase">
           · What We Do ·
         </p>
         <h2 className="text-4xl font-black tracking-[-0.02em] text-white md:text-5xl">
-          Other <span className="text-[#C8922A]">Services</span>
+          Other <span className="text-[#edb458]">Services</span>
         </h2>
       </div>
 
@@ -84,7 +84,7 @@ export default function ServicesSection() {
               key={service.num}
               className={`relative flex min-h-70 cursor-default flex-col justify-between overflow-hidden rounded-2xl p-8 transition-all duration-300 ${
                 hovered
-                  ? '-translate-y-1 border border-[#C8922A44] bg-[linear-gradient(145deg,#1e1a0f_0%,#181818_100%)] shadow-[0_0_50px_rgba(200,146,42,0.12),0_20px_40px_rgba(0,0,0,0.5)]'
+                  ? '-translate-y-1 border border-[#edb45844] bg-[linear-gradient(145deg,#1e1a0f_0%,#181818_100%)] shadow-[0_0_50px_rgba(237,180,88,0.12),0_20px_40px_rgba(0,0,0,0.5)]'
                   : 'border border-white/5 bg-[linear-gradient(145deg,#161616_0%,#111111_100%)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]'
               }`}
               onMouseEnter={() => setHoveredIndex(index)}
@@ -92,7 +92,7 @@ export default function ServicesSection() {
             >
               <div
                 className={`absolute top-0 left-8 right-8 h-px transition-all duration-500 ${
-                  hovered ? 'bg-[linear-gradient(90deg,transparent,#C8922A,transparent)]' : 'bg-transparent'
+                  hovered ? 'bg-[linear-gradient(90deg,transparent,#edb458,transparent)]' : 'bg-transparent'
                 }`}
               />
 
@@ -100,7 +100,7 @@ export default function ServicesSection() {
                 <div
                   className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 ${
                     hovered
-                      ? 'border-[#C8922A40] bg-[#C8922A20] text-[#C8922A]'
+                      ? 'border-[#edb45840] bg-[#edb45820] text-[#edb458]'
                       : 'border-white/10 bg-white/5 text-[#888]'
                   }`}
                 >
@@ -117,7 +117,7 @@ export default function ServicesSection() {
               </div>
 
               <div className="mt-8 flex items-center justify-between">
-                <div className={`flex items-center gap-2 text-xs font-semibold tracking-widest uppercase ${hovered ? 'text-[#C8922A]' : 'text-[#555]'}`}>
+                <div className={`flex items-center gap-2 text-xs font-semibold tracking-widest uppercase ${hovered ? 'text-[#edb458]' : 'text-[#555]'}`}>
                   <span>Learn More</span>
                   <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
                     <path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -127,8 +127,8 @@ export default function ServicesSection() {
                 <div
                   className={`flex h-11 w-11 items-center justify-center rounded-full text-sm font-black transition-all duration-300 ${
                     hovered
-                      ? 'border border-transparent bg-[linear-gradient(135deg,#C8922A,#D4A017)] text-[#0d0d0d]'
-                      : 'border border-[#C8922A40] bg-[#1e1e1e] text-[#C8922A]'
+                      ? 'border border-transparent bg-[#edb458] text-[#0d0d0d]'
+                      : 'border border-[#edb45840] bg-[#1e1e1e] text-[#edb458]'
                   }`}
                 >
                   {service.num}

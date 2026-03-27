@@ -8,7 +8,7 @@ const NavButton = ({ direction, onClick }: NavButtonProps) => (
     type="button"
     onClick={onClick}
     aria-label={direction === 'left' ? 'Oldingi mashina' : 'Keyingi mashina'}
-    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#292826] text-white transition-colors duration-200 hover:border-[#edb458] hover:text-[#edb458]"
+    className="flex h-11 w-11 items-center cursor-pointer justify-center rounded-full border border-white/10 bg-[#292826] text-white transition-colors duration-200 hover:border-[#edb458] hover:text-[#edb458]"
   >
     <svg
       className="h-4 w-4"
