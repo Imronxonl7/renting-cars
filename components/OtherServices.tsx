@@ -1,0 +1,143 @@
+'use client'
+
+import { ReactNode, useState } from 'react'
+
+interface Service {
+  num: string
+  title: string
+  description: string
+  icon: ReactNode
+}
+
+const services: Service[] = [
+  {
+    num: '01',
+    title: 'Daily Car Rental',
+    description:
+      "Experience ultimate freedom on your terms. Pick up your premium vehicle, explore at your own pace, and return it when you're done.",
+    icon: (
+      <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
+        <path
+          d="M8 6H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-3M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M8 6h8"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <circle cx="9" cy="14" r="1.5" fill="currentColor" />
+        <circle cx="15" cy="14" r="1.5" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    num: '02',
+    title: 'Monthly Car Rental',
+    description:
+      'Commit to comfort without committing to ownership. Monthly plans give you rolling fleet upgrades with full concierge support and flexible returns.',
+    icon: (
+      <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M8 14h2M14 14h2M8 18h2M14 18h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    num: '03',
+    title: 'Annual Car Rental',
+    description:
+      'Your personal fleet for the year ahead. Priority booking, dedicated account manager, unlimited swaps with luxury membership support.',
+    icon: (
+      <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
+        <path d="M12 2L3 7l9 5 9-5-9-5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M3 12l9 5 9-5M3 17l9 5 9-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+]
+
+export default function ServicesSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
+  return (
+    <section className="relative w-full overflow-hidden bg-[#1f1e1d] px-6 py-20">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(237,180,88,0.8)_1px,transparent_0)] bg-size-[40px_40px] opacity-[0.025]" />
+
+      <div className="mb-10 flex justify-center">
+        <div className="h-14 w-px bg-[linear-gradient(to_bottom,transparent,#edb458,transparent)]" />
+      </div>
+
+      <div className="mb-14 text-center">
+        <p className="mb-3 text-xs font-bold tracking-[0.3em] text-[#edb458] uppercase">
+          · What We Do ·
+        </p>
+        <h2 className="text-4xl font-black tracking-[-0.02em] text-white md:text-5xl">
+          Other <span className="text-[#edb458]">Services</span>
+        </h2>
+      </div>
+
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-3">
+        {services.map((service, index) => {
+          const hovered = hoveredIndex === index
+
+          return (
+            <div
+              key={service.num}
+              className={`relative flex min-h-70 cursor-default flex-col justify-between overflow-hidden rounded-2xl p-8 transition-all duration-300 ${
+                hovered
+                  ? '-translate-y-1 border border-[#edb45844] bg-[linear-gradient(145deg,#1e1a0f_0%,#181818_100%)] shadow-[0_0_50px_rgba(237,180,88,0.12),0_20px_40px_rgba(0,0,0,0.5)]'
+                  : 'border border-white/5 bg-[linear-gradient(145deg,#161616_0%,#111111_100%)] shadow-[0_4px_20px_rgba(0,0,0,0.3)]'
+              }`}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div
+                className={`absolute top-0 left-8 right-8 h-px transition-all duration-500 ${
+                  hovered ? 'bg-[linear-gradient(90deg,transparent,#edb458,transparent)]' : 'bg-transparent'
+                }`}
+              />
+
+              <div>
+                <div
+                  className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 ${
+                    hovered
+                      ? 'border-[#edb45840] bg-[#edb45820] text-[#edb458]'
+                      : 'border-white/10 bg-white/5 text-[#888]'
+                  }`}
+                >
+                  {service.icon}
+                </div>
+
+                <h3 className={`mb-3 text-xl font-bold tracking-[-0.01em] ${hovered ? 'text-white' : 'text-[#e5e5e5]'}`}>
+                  {service.title}
+                </h3>
+
+                <p className="text-sm leading-relaxed text-[#888]">
+                  {service.description}
+                </p>
+              </div>
+
+              <div className="mt-8 flex items-center justify-between">
+                <div className={`flex items-center gap-2 text-xs font-semibold tracking-widest uppercase ${hovered ? 'text-[#edb458]' : 'text-[#555]'}`}>
+                  <span>Learn More</span>
+                  <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
+                    <path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+
+                <div
+                  className={`flex h-11 w-11 items-center justify-center rounded-full text-sm font-black transition-all duration-300 ${
+                    hovered
+                      ? 'border border-transparent bg-[#edb458] text-[#0d0d0d]'
+                      : 'border border-[#edb45840] bg-[#1e1e1e] text-[#edb458]'
+                  }`}
+                >
+                  {service.num}
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}

@@ -2,11 +2,10 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import DillerHuman from "@/public/DillerHuman.jpg"
 
 const VIDEO_URL =
   'https://www.youtube.com/embed/tMvrTBSO6Oo?autoplay=1&rel=0&modestbranding=1'
-const DEFAULT_IMAGE_URL =
-  'https://awardsfinecars.com/wp-content/uploads/2025/03/autohomeei019-1024x874.jpg'
 
 const RentaxCard = () => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -49,7 +48,7 @@ const RentaxCard = () => {
           ) : (
             <>
               <Image
-                src={DEFAULT_IMAGE_URL}
+                src={DillerHuman}
                 alt="Rentax team member standing near a luxury car"
                 fill
                 priority
