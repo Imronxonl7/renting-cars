@@ -1,14 +1,7 @@
 'use client'
 
-<<<<<<< HEAD
-import useApi from "@/lib/api";
-import { getSupabaseRows } from "@/lib/supabase";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-=======
 import Image from 'next/image'
 import { useState } from 'react'
->>>>>>> 005999be3cb195f007ebbdda701b8456b3a6a311
 
 interface Testimonial {
   quote: string
@@ -21,32 +14,6 @@ interface Testimonial {
   accentBorderClass: string
 }
 
-<<<<<<< HEAD
-const TestimonialsSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [loading, setLoading] = useState(true);
- const {data:faqs} = useApi({url:'faq'})  
- console.log(faqs)
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getSupabaseRows<Testimonial>('testimonials');
-        setTestimonials(data || []);
-      } catch (error) {
-        console.error('TestimonialsSection fetch error:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // Если данных нет или идет загрузка, ничего не рендерим (или можно добавить скелетон)
-  if (loading || testimonials.length === 0) {
-    return null;
-  }
-=======
 const testimonials: Testimonial[] = [
   {
     quote:
@@ -84,8 +51,8 @@ const testimonials: Testimonial[] = [
 ]
 
 export default function TestimonialsSection() {
+  
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
->>>>>>> 005999be3cb195f007ebbdda701b8456b3a6a311
 
   return (
     <section className="relative w-full overflow-hidden bg-[#0d0d0d] px-6 py-20">
@@ -155,23 +122,11 @@ export default function TestimonialsSection() {
               <div className="flex items-center gap-4">
                 <div className="relative shrink-0">
                   <Image
-<<<<<<< HEAD
-                    width={44}
-                    height={44}
-                    src={t.avatar}
-                    alt={t.name}
-                    className="w-11 h-11 rounded-full object-cover"
-                    style={{
-                      border: `2px solid ${hovered ? t.accent : "#333"}`,
-                      transition: "border-color 0.3s ease",
-                    }}
-=======
                     width={400}
                     height={400}
                     src={testimonial.avatar}
                     alt={testimonial.name}
                     className={`h-11 w-11 rounded-full border-2 object-cover transition-colors duration-300 ${hovered ? testimonial.accentBorderClass : 'border-[#333]'}`}
->>>>>>> 005999be3cb195f007ebbdda701b8456b3a6a311
                   />
                   {hovered && (
                     <div className={`pointer-events-none absolute inset-0 rounded-full ${testimonial.accentGlowClass}`} />
@@ -198,12 +153,5 @@ export default function TestimonialsSection() {
         </button>
       </div>
     </section>
-<<<<<<< HEAD
-  );
-};
-
-export default TestimonialsSection;
-=======
   )
 }
->>>>>>> 005999be3cb195f007ebbdda701b8456b3a6a311

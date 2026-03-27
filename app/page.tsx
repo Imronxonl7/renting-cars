@@ -3,8 +3,7 @@ import type { Metadata } from 'next'
 import AsnwerQuestion from '@/components/AsnwerQuestion'
 import HeroSlider from '@/components/HeroSlider'
 import InterestedInRenting from '@/components/InterestedInRenting'
-import ServicesSection from '@/components/OtherServices'
-import OtherServices from '@/components/OtherServices'
+import OtherServices from '@/components/ServicesSection'
 import OurBlog from '@/components/OurBlog'
 import Rentax from '@/components/Rentax'
 import RentNow from '@/components/RentNow'
@@ -47,17 +46,6 @@ const HomePage = async () => {
 
   return (
     <section>
-<<<<<<< HEAD
-      <HeroSlider/>
-      <Rentax/>
-      <RentNow/>
-      <SelectCarWithName/>
-      <SelectCarWithCategory/>
-      <ServicesSection/>
-      <AsnwerQuestion/>
-      <OurBlog/>
-      <InterestedInRenting/>
-=======
       <HeroSlider />
       <Rentax />
       <RentNow />
@@ -67,7 +55,6 @@ const HomePage = async () => {
       <AsnwerQuestion />
       <OurBlog />
       <InterestedInRenting />
->>>>>>> 005999be3cb195f007ebbdda701b8456b3a6a311
     </section>
   )
 }

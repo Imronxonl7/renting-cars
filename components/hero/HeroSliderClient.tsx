@@ -7,6 +7,7 @@ import HeroMiniSpec from './HeroMiniSpec'
 import HeroSlideMedia from './HeroSlideMedia'
 import { Cars } from '@/types/Cars'
 import { Categories } from '@/types/Categories'
+import Link from 'next/link'
 
 const SLIDE_DURATION_MS = 30000 
 
@@ -135,11 +136,9 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
 
               <Anim visible={textVisible} delay={300}>
                 <div className="mb-5 flex flex-wrap gap-3 lg:mb-6">
-                  <button
-                    className="flex items-center gap-2 rounded-full bg-[#edb458] px-5 py-3 text-sm font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 sm:px-6"
-                  >
+                  <Link href={`/cars/${current.id}`} className="flex items-center gap-2 rounded-full bg-[#edb458] px-5 py-3 text-sm font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 sm:px-6">
                     Ijaraga olish <ArrowIcon />
-                  </button>
+                  </Link>
                   <button className="flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition-all duration-200 hover:border-[#edb458] hover:text-[#edb458] active:scale-95 sm:px-6">
                     Batafsil <ArrowIcon />
                   </button>
