@@ -44,7 +44,7 @@ const RentaxText = () => {
       </div> */}
       <div className="flex flex-col justify-center max-w-[560px]">
         {/* Badge */}
-        <span className="text-[#F5A623] text-sm font-medium tracking-widest uppercase mb-4">
+        <span className="text-[#edb458] text-sm font-medium tracking-widest uppercase mb-4">
           - Rentax
         </span>
 
@@ -52,7 +52,7 @@ const RentaxText = () => {
         <h2 className="text-white text-4xl font-bold leading-tight mb-2">
           We Are More Than
         </h2>
-        <h2 className="text-[#F5A623] text-4xl font-bold leading-tight mb-6">
+        <h2 className="text-[#edb458] text-4xl font-bold leading-tight mb-6">
           A Car Rental Company
         </h2>
 
@@ -69,7 +69,7 @@ const RentaxText = () => {
           <li className="flex items-center gap-3">
             <span className="w-6 h-6 rounded-full bg-[#F5A623]/20 flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-3.5 h-3.5 text-[#F5A623]"
+                className="w-3.5 h-3.5 text-[#edb458]"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={2.5}
@@ -89,7 +89,7 @@ const RentaxText = () => {
           <li className="flex items-center gap-3">
             <span className="w-6 h-6 rounded-full bg-[#F5A623]/20 flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-3.5 h-3.5 text-[#F5A623]"
+                className="w-3.5 h-3.5 text-[#edb458]"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={2.5}
@@ -108,7 +108,7 @@ const RentaxText = () => {
 
         {/* Button */}
         <div>
-          <button className="cursor-pointer bg-[#F5A623] hover:bg-[#e09510] text-black text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200 flex items-center gap-2">
+          <button className="cursor-pointer bg-[#edb458] hover:bg-[#e09510] text-black text-sm font-semibold px-7 py-3.5 rounded-full transition-colors duration-200 flex items-center gap-2">
             Read More
             <svg
               className="w-4 h-4"

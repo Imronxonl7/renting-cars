@@ -6,7 +6,7 @@ const RentaxCard = () => {
   return (
     <div>
       <div className="relative flex-shrink-0">
-        <div className="relative w-[320px] h-[300px] sm:w-[400px] sm:h-[380px] lg:w-[500px] lg:h-[460px] rounded-2xl overflow-hidden">
+        <div className="relative w-[320px] h-[300px] sm:w-[401px] sm:h-[380px] lg:w-[500px] lg:h-[460px] rounded-2xl overflow-hidden">
           <Image
             src={RentaxImage}
             alt="Car rental professional"
