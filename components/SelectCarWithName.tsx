@@ -1,28 +1,30 @@
-"use client";
+import Container from './Container'
+import SelectCarWithNameHeader from './SelectCarWithNameHeader'
+import SelectCarWithNameClient from './SelectCarWithNameClient'
+import { getSupabaseRows } from '@/lib/supabase'
+import { Cars } from '@/types/Cars'
+import { useState } from 'react'
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import Container from "./Container";
-import useApi from "@/lib/api";
+const SelectCarWithName = async () => {
+  const cars = await getSupabaseRows<Cars>('cars').catch((error) => {
+    console.error('SelectCarWithName fetch error:', error)
+    return []
+  })
+  const limitedCars = cars.slice(-30)
 
-interface Car {
-  id: string;
-  model: string;
-  seats: number;
-  doors: number;
-  transmission: string;
-  fuel_type: string;
-  price_per_day: number;
-  images: string[];
-  is_available: boolean;
-  brand?: { name: string };
-}
+  if (limitedCars.length === 0) {
+    return null
+  }
 
-const IconDoor = () => (
+  return (
+    <section className="w-full overflow-hidden bg-[#1f1e1d] py-16 sm:py-20 lg:py-24">
+      <Container className=''>
+        <SelectCarWithNameHeader />
+        <SelectCarWithNameClient cars={limitedCars} />
+      </Container>
+    </section>
+  )
+ => (
   <svg
     width="13"
     height="13"
@@ -404,6 +406,20 @@ const SelectCarWithName = () => {
           Loading fleet...
         </p>
       )}
+    </section>
+  );
+};
+
+export default SelectCarWithName;
+ba(255,255,255,0.2)",
+            fontFamily: "'DM Sans', sans-serif",
+            letterSpacing: "0.12em",
+          }}>
+            Loading fleet…
+          </p>
+        )}
+
+      </Container>
     </section>
   );
 };
