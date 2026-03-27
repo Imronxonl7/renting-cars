@@ -26,8 +26,8 @@ const FleetCard = ({
           : 'border-white/6 bg-[#252421] opacity-40 shadow-none lg:scale-[0.92] hover:opacity-70'
       } ${
         mobile
-          ? 'mx-auto w-full max-w-[22rem]'
-          : 'w-full flex-1 basis-0 lg:min-h-[35rem] lg:max-w-none xl:min-h-[37rem]'
+          ? 'mx-auto w-full max-w-88'
+          : 'w-full flex-1 basis-0 lg:min-h-140 lg:max-w-none xl:min-h-148'
       }`}
     >
       <button
