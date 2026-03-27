@@ -8,6 +8,7 @@ import HeroMiniSpec from './HeroMiniSpec'
 import HeroSlideMedia from './HeroSlideMedia'
 import { Cars } from '@/types/Cars'
 import { Categories } from '@/types/Categories'
+import Link from 'next/link'
 
 const SLIDE_DURATION_MS = 30000 
 
@@ -143,6 +144,7 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
 
               <Anim visible={textVisible} delay={300} variant="rise-soft">
                 <div className="mb-5 flex flex-wrap gap-3 lg:mb-6">
+<<<<<<< HEAD
                   <Link
                     href={`/cars/${encodeURIComponent(currentTextCar.id)}#rent-now`}
                     className="flex items-center gap-2 cursor-pointer rounded-full bg-[#edb458] hover:bg-white hover:text-[#edb458] px-5 py-3 text-sm font-bold text-black transition-all duration-300 hover:brightness-110 active:scale-95 sm:px-6"
@@ -153,6 +155,12 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
                     href={`/cars/${encodeURIComponent(currentTextCar.id)}`}
                     className="flex items-center cursor-pointer gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-[#edb458] hover:text-black active:scale-95 sm:px-6"
                   >
+=======
+                  <Link href={`/cars/${current.id}`} className="flex items-center gap-2 rounded-full bg-[#edb458] px-5 py-3 text-sm font-bold text-black transition-all duration-200 hover:brightness-110 active:scale-95 sm:px-6">
+                    Ijaraga olish <ArrowIcon />
+                  </Link>
+                  <button className="flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white transition-all duration-200 hover:border-[#edb458] hover:text-[#edb458] active:scale-95 sm:px-6">
+>>>>>>> 3250d17775e3681117eebf57a5f11785d0567e34
                     Batafsil <ArrowIcon />
                   </Link>
                 </div>
