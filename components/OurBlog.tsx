@@ -47,7 +47,7 @@ const blogPosts = [
 ]
 
   return (
-    <section className="bg-[#111] py-20 px-6 md:px-16">
+    <section className="bg-[#1f1e1d] py-20 px-6 md:px-16">
       <Container className='your style'>
           {/* Decorative top line */}
           <div className="flex justify-center mb-8">
