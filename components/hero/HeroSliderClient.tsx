@@ -74,7 +74,7 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
   const prev = prevIndex !== null ? cars[prevIndex] : null
 
   return (
-    <section className="relative z-20 w-full overflow-x-hidden overflow-y-visible bg-black min-h-[720px] sm:min-h-[760px] lg:min-h-[860px] xl:min-h-[900px] 2xl:min-h-[980px]">
+    <section className="relative z-20 w-full overflow-x-hidden overflow-y-visible bg-black min-h-180 sm:min-h-190 lg:min-h-215 xl:min-h-225 2xl:min-h-245">
       <div className="absolute inset-0 overflow-visible">
         {prev && (
           <div

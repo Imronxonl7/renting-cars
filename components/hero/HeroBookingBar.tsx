@@ -9,7 +9,7 @@ type HeroBookingBarProps = {
 
 const HeroBookingBar = ({ cars, categories }: HeroBookingBarProps) => {
   return (
-    <div className="absolute bottom-4 left-0 right-0 z-30 px-4 sm:bottom-5 sm:px-6 lg:bottom-6">
+    <div className="absolute bottom-4 left-0 right-0 z-30 hidden px-4 sm:bottom-5 sm:px-6 md:block lg:bottom-6">
       <BookingBar
         cars={cars}
         categories={categories}

@@ -34,7 +34,7 @@ const RentNow = async () => {
       </div>
 
       <div className="relative z-10 flex w-full flex-col items-center px-4 pt-16 pb-24 text-center">
-        <span className="mb-4 text-xs font-semibold tracking-[0.25em] text-[#F5A623] uppercase">
+        <span className="mb-4 text-xs font-semibold tracking-[0.25em] text-[#edb458] uppercase">
           - RENT NOW
         </span>
 
