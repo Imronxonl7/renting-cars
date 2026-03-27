@@ -1,7 +1,9 @@
 "use client";
 
+import useApi from "@/lib/api";
+import { getSupabaseRows } from "@/lib/supabase";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Testimonial {
   quote: string;
@@ -12,38 +14,30 @@ interface Testimonial {
   accent: string;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    quote:
-      "Absolutely seamless from start to finish. The Sport Car I booked arrived immaculate — I felt like I was driving something from the future. Will never rent anywhere else.",
-    name: "Emily Martin",
-    role: "Business Executive",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/80?img=47",
-    accent: "#C8922A",
-  },
-  {
-    quote:
-      "I've tried half a dozen luxury rental services — none come close to this. The vehicle was pristine, drop-off was effortless, and the team genuinely cares.",
-    name: "Olivia Brown",
-    role: "Frequent Traveler",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/80?img=12",
-    accent: "#D4A017",
-  },
-  {
-    quote:
-      "Used the annual plan for 6 months now. My dedicated account manager has saved me hours every week. Swapping cars is as easy as sending a message.",
-    name: "Marcus Chen",
-    role: "Entrepreneur",
-    rating: 5,
-    avatar: "https://i.pravatar.cc/80?img=33",
-    accent: "#B8841E",
-  },
-];
-
-export default function TestimonialsSection() {
+const TestimonialsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+ const {data:faqs} = useApi({url:'faq'})  
+ console.log(faqs)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getSupabaseRows<Testimonial>('testimonials');
+        setTestimonials(data || []);
+      } catch (error) {
+        console.error('TestimonialsSection fetch error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Если данных нет или идет загрузка, ничего не рендерим (или можно добавить скелетон)
+  if (loading || testimonials.length === 0) {
+    return null;
+  }
 
   return (
     <section
@@ -156,7 +150,9 @@ export default function TestimonialsSection() {
               {/* Author */}
               <div className="flex items-center gap-4">
                 <div className="relative shrink-0">
-                  <Image width={400} height={400}
+                  <Image
+                    width={44}
+                    height={44}
                     src={t.avatar}
                     alt={t.name}
                     className="w-11 h-11 rounded-full object-cover"
@@ -210,4 +206,6 @@ export default function TestimonialsSection() {
       </div>
     </section>
   );
-}
+};
+
+export default TestimonialsSection;

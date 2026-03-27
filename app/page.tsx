@@ -1,6 +1,7 @@
 import AsnwerQuestion from '@/components/AsnwerQuestion'
 import HeroSlider from '@/components/HeroSlider'
 import InterestedInRenting from '@/components/InterestedInRenting'
+import ServicesSection from '@/components/OtherServices'
 import OtherServices from '@/components/OtherServices'
 import OurBlog from '@/components/OurBlog'
 import Rentax from '@/components/Rentax'
@@ -22,7 +23,7 @@ const HomePage = () => {
       <RentNow/>
       <SelectCarWithName/>
       <SelectCarWithCategory/>
-      <OtherServices/>
+      <ServicesSection/>
       <AsnwerQuestion/>
       <OurBlog/>
       <InterestedInRenting/>
