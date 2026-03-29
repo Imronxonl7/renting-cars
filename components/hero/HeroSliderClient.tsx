@@ -9,6 +9,7 @@ import HeroSlideMedia from './HeroSlideMedia'
 import { Cars } from '@/types/Cars'
 import { Categories } from '@/types/Categories'
 
+
 const SLIDE_DURATION_MS = 30000 
 
 type HeroSliderClientProps = {

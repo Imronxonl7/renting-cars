@@ -13,6 +13,9 @@ const HeroSlider = async () => {
       return null
     })
 
+    console.log(heroData);
+    
+
   if (!heroData || heroData.cars.length === 0) {
     return null
   }

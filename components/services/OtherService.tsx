@@ -49,7 +49,7 @@ const OtherService = () => {
 
                 <div className="absolute bottom-0 left-6 translate-y-1/4">
                   <div className="absolute -z-10 h-16 w-16 rounded-full bg-[#0F0F0F]"></div>
-                  <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-yellow-400 font-semibold text-black shadow-lg transition duration-200 hover:bg-[#2A2A2A] hover:text-white">
+                        <div className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-[#edb458] font-semibold text-black shadow-lg transition duration-200 hover:bg-[#2A2A2A] hover:text-white">
                     {Number(service.id)}.
                   </div>
                 </div>

@@ -59,7 +59,7 @@ const ServiceCard = () => {
 
                 <div className="absolute bottom-0 left-6 translate-y-1/4">
                   <div className="absolute w-16 h-16 bg-[#0F0F0F] rounded-full -z-10"></div>
-                  <div className="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-black font-semibold shadow-lg hover:bg-[#2A2A2A] duration-200 hover:text-white cursor-pointer">
+                        <div className="w-12 h-12 rounded-full bg-[#edb458] flex items-center justify-center text-black font-semibold shadow-lg hover:bg-[#2A2A2A] duration-200 hover:text-white cursor-pointer">
                     {Number(service.id)}.
                   </div>
                 </div>
