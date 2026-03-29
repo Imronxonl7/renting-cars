@@ -1,10 +1,12 @@
-import React from 'react'
+import TeamsHeroHeaderImage from '@/components/teams/TeamsHeroHeaderImage'
+import TeamsGrid from '@/components/teams/TeamsGrid'
 
 const TeamsPage = () => {
   return (
-    <div>
-      TeamsPage
-    </div>
+    <section>
+      <TeamsHeroHeaderImage/>
+      <TeamsGrid />
+    </section>
   )
 }
 

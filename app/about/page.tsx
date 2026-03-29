@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import HeaderImage from '@/components/about/HeaderImage'
 import OurExperts from '@/components/about/OurExperts'
 import ServicesSection from '@/components/OtherServices'
-import Rentax from '@/components/Rentax'
 import RentNow from '@/components/RentNow'
 import SelectCarWithCategory from '@/components/SelectCarWithCategory'
+import RentaxAbout from '@/components/about/RentaxAbout'
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -39,7 +39,7 @@ const AboutPage = () => {
   return (
     <section>
       <HeaderImage/>
-      <Rentax/>
+      <RentaxAbout/>
       <RentNow/>
       <SelectCarWithCategory/>
       <OurExperts/>

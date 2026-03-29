@@ -11,7 +11,7 @@ const AnswerQuestionClient = ({ items }: AnswerQuestionClientProps) => {
   const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null)
 
   return (
-    <div className="faq-scroll w-full max-h-[44rem] space-y-4 overflow-y-auto pr-2">
+    <div className="faq-scroll w-full max-h-176 space-y-4 overflow-y-auto pr-2">
       {items.map((item, index) => {
         const isOpen = openId === item.id
 
