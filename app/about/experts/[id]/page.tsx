@@ -65,7 +65,7 @@ const ExpertDetailPage = async ({ params }: ExpertDetailPageProps) => {
               <StatCard label="Specialty" value={expert.specialty} />
             </div>
 
-            <div className="mt-8 rounded-[24px] border border-white/8 bg-[#1f1e1d] px-5 py-5 sm:px-6">
+            <div className="mt-8 rounded-3xl border border-white/8 bg-[#1f1e1d] px-5 py-5 sm:px-6">
               <p className="text-xs font-semibold tracking-[0.28em] text-[#edb458] uppercase">
                 Personal Note
               </p>
@@ -76,7 +76,7 @@ const ExpertDetailPage = async ({ params }: ExpertDetailPageProps) => {
           </div>
 
           <div className="relative overflow-hidden rounded-[30px] border border-white/8 bg-[#252421] shadow-[0_18px_48px_rgba(0,0,0,0.24)]">
-            <div className="relative aspect-[0.92/1] min-h-[420px] w-full sm:min-h-[520px]">
+            <div className="relative aspect-[0.92/1] min-h-105 w-full sm:min-h-130">
               <Image
                 src={expert.image}
                 alt={expert.name}
