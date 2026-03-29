@@ -17,29 +17,29 @@ type CarsPageProps = {
 const CARS_PER_PAGE = 12
 
 export const metadata: Metadata = {
-  title: 'Cars',
+  title: 'Mashinalar',
   description:
-    'Browse luxury, sport, SUV, and executive rental cars. Compare categories, pricing, and features to find the right vehicle for your next trip.',
+    'Hashamatli, sport, SUV va biznes klassdagi ijaraga beriladigan mashinalarni ko‘rib chiqing. O‘zingizga mos avtomobilni narx va qulayliklar bilan solishtirib tanlang.',
   keywords: [
-    'rental cars',
-    'luxury cars',
-    'sports cars rental',
-    'SUV rental fleet',
-    'premium car booking',
-    'cars catalog',
+    'ijara mashinalar',
+    'hashamatli mashinalar',
+    'sport mashina ijarasi',
+    'suv park',
+    'premium mashina bron qilish',
+    'mashinalar katalogi',
   ],
   openGraph: {
-    title: 'Cars | Renting Cars',
+    title: 'Mashinalar | Renting Cars',
     description:
-      'Explore our premium rental fleet with daily pricing, category filters, and standout vehicle options for every plan.',
+      'Kunlik narxlar, category filter va turli ehtiyojlar uchun mos premium avtomobillar parkini ko‘rib chiqing.',
     url: '/cars',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cars | Renting Cars',
+    title: 'Mashinalar | Renting Cars',
     description:
-      'Explore luxury and premium rental cars with filters, pricing, and full vehicle details.',
+      'Filter, narx va to‘liq ma’lumotlar bilan premium mashinalarni ko‘rib chiqing.',
   },
   alternates: {
     canonical: '/cars',

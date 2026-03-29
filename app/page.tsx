@@ -11,30 +11,30 @@ import SelectCarWithCategory from '@/components/SelectCarWithCategory'
 import SelectCarWithName from '@/components/SelectCarWithName'
 
 export const metadata: Metadata = {
-  title: 'Luxury & Premium Car Rental',
+  title: 'Hashamatli va Premium Avto Ijara',
   description:
-    'Rent luxury, sport, and family-friendly cars with a smooth booking experience. Discover premium vehicles, daily deals, and standout comfort for every trip.',
+    'Hashamatli, sport va oilaviy avtomobillarni qulay tarzda ijaraga oling. Har bir safar uchun premium mashinalar, qulay narx va yuqori darajadagi qulaylikni toping.',
   keywords: [
-    'luxury car rental',
-    'premium car rental',
-    'sports car hire',
-    'SUV rental',
-    'daily car rental',
-    'rent a car homepage',
+    'avto ijara',
+    'hashamatli mashina ijarasi',
+    'premium mashina ijarasi',
+    'sport car ijara',
+    'suv ijara',
+    'kunlik mashina ijarasi',
   ],
   openGraph: {
-    title: 'Luxury & Premium Car Rental | Renting Cars',
+    title: 'Hashamatli va Premium Avto Ijara | Renting Cars',
     description:
-      'Explore premium rentals built for comfort, style, and performance. Find the right car for city drives, business travel, and unforgettable road trips.',
+      'Qulaylik, uslub va kuchni birlashtirgan premium avtomobillarni tomosha qiling. Shahar, biznes yoki sayohat uchun mos mashinani toping.',
     type: 'website',
     locale: 'en_US',
     siteName: 'Renting Cars',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Luxury & Premium Car Rental | Renting Cars',
+    title: 'Hashamatli va Premium Avto Ijara | Renting Cars',
     description:
-      'Explore premium rentals built for comfort, style, and performance for every kind of trip.',
+      'Har xil safarlar uchun qulay, chiroyli va kuchli premium avtomobillarni ko‘rib chiqing.',
   },
   alternates: {
     canonical: '/',

@@ -21,13 +21,31 @@ export const generateMetadata = async ({ params }: CarDetailPageProps): Promise<
 
   if (!car) {
     return {
-      title: 'Car Not Found',
+      title: 'Mashina Topilmadi',
     }
   }
 
   return {
-    title: car.model,
-    description: car.description || `${car.model} uchun premium rental detail sahifasi.`,
+    title: `${car.model} | Mashina`,
+    description: car.description || `${car.model} uchun premium avto ijara sahifasi.`,
+    openGraph: {
+      title: `${car.model} | Renting Cars`,
+      description:
+        car.description || `${car.model} uchun premium avto ijara sahifasi.`,
+      url: `/cars/${id}`,
+      type: 'website',
+      images: car.images?.[0] ? [car.images[0]] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${car.model} | Renting Cars`,
+      description:
+        car.description || `${car.model} uchun premium avto ijara sahifasi.`,
+      images: car.images?.[0] ? [car.images[0]] : undefined,
+    },
+    alternates: {
+      canonical: `/cars/${id}`,
+    },
   }
 }
 

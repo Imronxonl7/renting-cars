@@ -16,12 +16,28 @@ export const generateMetadata = async ({ params }: ExpertDetailPageProps): Promi
   const expert = experts.find((item) => item.id === id)
 
   if (!expert) {
-    return { title: 'Expert Not Found' }
+    return { title: 'Ekspert Topilmadi' }
   }
 
   return {
-    title: expert.name,
+    title: `${expert.name} | Ekspert Haqida`,
     description: `${expert.name} - ${expert.role}`,
+    openGraph: {
+      title: `${expert.name} | Renting Cars`,
+      description: `${expert.name} - ${expert.role}`,
+      url: `/about/experts/${id}`,
+      type: 'website',
+      images: [expert.image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${expert.name} | Renting Cars`,
+      description: `${expert.name} - ${expert.role}`,
+      images: [expert.image],
+    },
+    alternates: {
+      canonical: `/about/experts/${id}`,
+    },
   }
 }
 

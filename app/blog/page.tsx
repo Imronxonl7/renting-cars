@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,6 +9,35 @@ import { getSupabaseRows } from '@/lib/supabase'
 import { Categories } from '@/types/Categories'
 
 const blogTags = ['Airport', 'Car', 'Limousine', 'Rental', 'Service']
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'DriVora blogida avto ijara bo‘yicha foydali maslahatlar, premium xizmat yangiliklari va sayohatga oid qiziqarli maqolalarni o‘qing.',
+  keywords: [
+    'avto ijara blogi',
+    'premium xizmat blogi',
+    'mashina ijara maslahatlari',
+    'sayohat maqolalari',
+    'drivora blog',
+  ],
+  openGraph: {
+    title: 'Blog | Renting Cars',
+    description:
+      'Hashamatli ijara, premium safar va zamonaviy mobil xizmatlarga oid maqola hamda yangiliklarni kuzating.',
+    url: '/blog',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Renting Cars',
+    description:
+      'Blogimiz orqali premium ijara hikoyalari, park yangiliklari va foydali maslahatlarni o‘qing.',
+  },
+  alternates: {
+    canonical: '/blog',
+  },
+}
 
 async function BlogPage() {
   const categories = await getSupabaseRows<Categories>('categories').catch(

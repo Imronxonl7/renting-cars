@@ -16,12 +16,28 @@ export const generateMetadata = async ({ params }: TeamDetailPageProps): Promise
   const expert = experts.find((item) => item.id === id)
 
   if (!expert) {
-    return { title: 'Team Member Not Found' }
+    return { title: 'Jamoa A’zosi Topilmadi' }
   }
 
   return {
-    title: `${expert.name} | Team`,
+    title: `${expert.name} | Jamoa`,
     description: `${expert.name} - ${expert.role}`,
+    openGraph: {
+      title: `${expert.name} | Jamoa | Renting Cars`,
+      description: `${expert.name} - ${expert.role}`,
+      url: `/teams/${id}`,
+      type: 'website',
+      images: [expert.image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${expert.name} | Jamoa | Renting Cars`,
+      description: `${expert.name} - ${expert.role}`,
+      images: [expert.image],
+    },
+    alternates: {
+      canonical: `/teams/${id}`,
+    },
   }
 }
 

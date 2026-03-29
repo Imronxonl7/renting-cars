@@ -7,28 +7,28 @@ import SelectCarWithCategory from '@/components/SelectCarWithCategory'
 import RentaxAbout from '@/components/about/RentaxAbout'
 
 export const metadata: Metadata = {
-  title: 'About Us',
+  title: 'Biz Haqimizda',
   description:
-    'Learn more about DriVora, our premium car rental experience, expert team, flexible services, and the standards behind every luxury booking.',
+    'DriVora haqida ko‘proq bilib oling: premium avto ijara tajribamiz, ekspert jamoamiz, qulay xizmatlarimiz va har bir buyurtma ortidagi sifat mezonlari.',
   keywords: [
-    'about DriVora',
-    'about car rental company',
-    'premium rental team',
-    'luxury car rental experts',
-    'car rental service company',
+    'biz haqimizda',
+    'avto ijara kompaniyasi',
+    'premium ijara jamoasi',
+    'hashamatli avto ijara ekspertlari',
+    'mashina ijarasi xizmati',
   ],
   openGraph: {
-    title: 'About Us | Renting Cars',
+    title: 'Biz Haqimizda | Renting Cars',
     description:
-      'Discover the team, service philosophy, and premium standards that shape every DriVora rental experience.',
+      'DriVora’ning jamoasi, xizmat falsafasi va har bir premium ijara ortidagi sifat standartlari bilan tanishing.',
     url: '/about',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Us | Renting Cars',
+    title: 'Biz Haqimizda | Renting Cars',
     description:
-      'Meet the experts and discover the service philosophy behind our premium car rental experience.',
+      'Ekspertlarimiz bilan tanishing va premium avto ijara xizmatimiz ortidagi yondashuvni bilib oling.',
   },
   alternates: {
     canonical: '/about',
