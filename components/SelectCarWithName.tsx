@@ -25,4 +25,4 @@ const SelectCarWithName = async () => {
   )
 }
 
-export default SelectCarWithName
+export default SelectCarWithName;
