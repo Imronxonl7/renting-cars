@@ -4,7 +4,7 @@ import Link from 'next/link'
 const InteresredService = () => {
   return (
     <section className="bg-[#1f1e1d] pb-24 pt-4 lg:pb-28">
-      <div className="relative min-h-[500px] w-full overflow-hidden sm:min-h-[560px] lg:min-h-[620px]">
+      <div className="relative min-h-125 w-full overflow-hidden sm:min-h-140 lg:min-h-155">
         <Image
           src="/Aston.webp"
           alt="Interested in renting background"
@@ -17,7 +17,7 @@ const InteresredService = () => {
         <div className="absolute inset-0 bg-black/52" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,12,12,0.42)_0%,rgba(12,12,12,0.16)_34%,rgba(12,12,12,0.56)_100%)]" />
 
-        <div className="relative z-10 flex min-h-[500px] flex-col items-center justify-center px-6 text-center sm:min-h-[560px] lg:min-h-[620px]">
+        <div className="relative z-10 flex min-h-125 flex-col items-center justify-center px-6 text-center sm:min-h-140 lg:min-h-155">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.38em] text-[#edb458]">
             Rent Your Car
           </p>
@@ -33,7 +33,7 @@ const InteresredService = () => {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
             <Link
               href="/contact"
-                          className="inline-flex min-w-[190px] items-center justify-center gap-3 rounded-full bg-[#edb458] px-8 py-4 text-base font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-white hover:text-[#edb458]"
+                          className="inline-flex min-w-47.5 items-center justify-center gap-3 rounded-full bg-[#edb458] px-8 py-4 text-base font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-white hover:text-[#edb458]"
             >
               <svg
                 className="h-5 w-5"
@@ -58,7 +58,7 @@ const InteresredService = () => {
 
             <Link
               href="/cars"
-                          className="inline-flex min-w-[190px] items-center justify-center gap-3 rounded-full border border-white/35 bg-black/18 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-colors duration-300 hover:bg-[#edb458] hover:text-[#1f1e1d]"
+                          className="inline-flex min-w-47.5 items-center justify-center gap-3 rounded-full border border-white/35 bg-black/18 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-colors duration-300 hover:bg-[#edb458] hover:text-[#1f1e1d]"
             >
               Rent Now
               <svg

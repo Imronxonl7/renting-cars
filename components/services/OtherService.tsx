@@ -40,7 +40,7 @@ const OtherService = () => {
             {otherServices.map((service) => (
               <div
                 key={service.id}
-                className="relative min-h-[200px] overflow-hidden rounded-2xl bg-[#1C1C1C] p-6 text-white"
+                className="relative min-h-50 overflow-hidden rounded-2xl bg-[#1C1C1C] p-6 text-white"
               >
                 <h3 className="mb-2 text-lg font-semibold">{service.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-400">

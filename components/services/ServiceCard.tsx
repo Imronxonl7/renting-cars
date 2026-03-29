@@ -49,7 +49,7 @@ const ServiceCard = () => {
               <div
                 key={service.id}
                 className={`relative bg-[#1C1C1C] rounded-2xl p-6 text-white overflow-hidden ${
-                  index === 0 ? 'h-[200px]' : 'min-h-[200px]'
+                  index === 0 ? 'h-50' : 'min-h-50'
                 }`}
               >
                 <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
