@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Container from './Container'
 
 const navLinks = [
@@ -16,10 +16,30 @@ const navLinks = [
 const Header = () => {
   const [active, setActive] = useState('Home')
   const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!menuOpen) {
+        return
+      }
+
+      if (!menuRef.current?.contains(event.target as Node)) {
+        setMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handlePointerDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown)
+    }
+  }, [menuOpen])
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 w-full">
       <Container className="">
+        <div ref={menuRef}>
         <div className="flex items-center justify-between py-5 md:py-6">
           {/* Logo */}
           <Link href="/" className="inline-block">
@@ -125,6 +145,7 @@ const Header = () => {
             </div>
           </div>
         )}
+        </div>
       </Container>
     </header>
   )

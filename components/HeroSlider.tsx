@@ -7,14 +7,11 @@ const HeroSlider = async () => {
   const heroData = await Promise.all([
       getSupabaseRows<Cars>('cars'),
       getSupabaseRows<Categories>('categories'),
-    ]).then(([cars, categories]) => ({ cars, categories }))
+    ]).then(([cars, categories]) => ({ cars: cars.slice(0, 20), categories }))
     .catch((error) => {
       console.error('HeroSlider fetch error:', error)
       return null
     })
-
-    console.log(heroData);
-    
 
   if (!heroData || heroData.cars.length === 0) {
     return null

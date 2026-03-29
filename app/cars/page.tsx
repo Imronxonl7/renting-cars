@@ -15,7 +15,32 @@ type CarsPageProps = {
 
 export const metadata: Metadata = {
   title: 'Cars',
-  description: 'Browse available rental cars by category and find the right vehicle for your next trip.',
+  description:
+    'Browse luxury, sport, SUV, and executive rental cars. Compare categories, pricing, and features to find the right vehicle for your next trip.',
+  keywords: [
+    'rental cars',
+    'luxury cars',
+    'sports cars rental',
+    'SUV rental fleet',
+    'premium car booking',
+    'cars catalog',
+  ],
+  openGraph: {
+    title: 'Cars | Renting Cars',
+    description:
+      'Explore our premium rental fleet with daily pricing, category filters, and standout vehicle options for every plan.',
+    url: '/cars',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cars | Renting Cars',
+    description:
+      'Explore luxury and premium rental cars with filters, pricing, and full vehicle details.',
+  },
+  alternates: {
+    canonical: '/cars',
+  },
 }
 
 const CarsPage = async ({ searchParams }: CarsPageProps) => {
