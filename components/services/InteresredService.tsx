@@ -33,7 +33,7 @@ const InteresredService = () => {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
             <Link
               href="/contact"
-              className="inline-flex min-w-[190px] items-center justify-center gap-3 rounded-full bg-[#edb458] px-8 py-4 text-base font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-white"
+                          className="inline-flex min-w-[190px] items-center justify-center gap-3 rounded-full bg-[#edb458] px-8 py-4 text-base font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-white hover:text-[#edb458]"
             >
               <svg
                 className="h-5 w-5"
@@ -58,7 +58,7 @@ const InteresredService = () => {
 
             <Link
               href="/cars"
-              className="inline-flex min-w-[190px] items-center justify-center gap-3 rounded-full border border-white/35 bg-black/18 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-colors duration-300 hover:border-[#edb458] hover:text-[#edb458]"
+                          className="inline-flex min-w-[190px] items-center justify-center gap-3 rounded-full border border-white/35 bg-black/18 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-colors duration-300 hover:bg-[#edb458] hover:text-[#1f1e1d]"
             >
               Rent Now
               <svg
