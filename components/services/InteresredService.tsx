@@ -4,7 +4,7 @@ import Link from 'next/link'
 const InteresredService = () => {
   return (
     <section className="bg-[#1f1e1d] pb-24 pt-4 lg:pb-28">
-      <div className="relative min-h-[500px] w-full overflow-hidden sm:min-h-[560px] lg:min-h-[620px]">
+      <div className="relative min-h-[501px] w-full overflow-hidden sm:min-h-[560px] lg:min-h-[620px]">
         <Image
           src="/Aston.webp"
           alt="Interested in renting background"

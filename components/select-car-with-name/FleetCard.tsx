@@ -20,7 +20,7 @@ const FleetCard = ({
 
   return (
     <article
-      className={`group relative overflow-hidden rounded-[28px] border transition-[transform,opacity,filter,background-color,border-color,box-shadow] duration-820 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform ${
+      className={`group relative overflow-hidden rounded-[28px] border transition-[transform,opacity,filter,background-color,border-color,box-shadow] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform transform-gpu ${
         active
           ? 'border-white/10 bg-[#2a2927] opacity-100 shadow-[0_30px_80px_rgba(0,0,0,0.28)] lg:scale-100'
           : 'border-white/6 bg-[#252421] opacity-40 shadow-none lg:scale-[0.92] hover:opacity-70'
@@ -43,24 +43,24 @@ const FleetCard = ({
           alt={car.model}
           fill
           sizes="(max-width: 1023px) 92vw, (max-width: 1279px) 36vw, 420px"
-          className={`object-cover transition-transform duration-1100 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`object-cover transition-transform duration-48000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             active ? 'scale-100' : 'scale-[1.06]'
           }`}
         />
         <div
-          className={`absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.28)_100%)] transition-opacity duration-900 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.28)_100%)] transition-opacity duration-48000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             active ? 'opacity-100' : 'opacity-75'
           }`}
         />
       </div>
 
-      <div className="flex flex-col gap-4 px-5 py-5 transition-opacity duration-760 ease-[cubic-bezier(0.16,1,0.3,1)] sm:px-6 sm:py-6">
+      <div className="flex flex-col gap-4 px-5 py-5 transition-[opacity,transform] duration-900 ease-[cubic-bezier(0.16,1,0.3,1)] sm:px-6 sm:py-6">
         <div>
           <h3 className="line-clamp-1 text-2xl font-extrabold text-white sm:text-[32px]">
             {car.model}
           </h3>
           <div
-            className={`mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm transition-opacity duration-760 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm transition-opacity duration-900 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               active ? 'text-white/68 opacity-100' : 'text-white/54 opacity-80'
             }`}
           >

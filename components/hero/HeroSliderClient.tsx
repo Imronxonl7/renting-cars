@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { ReactNode, useEffect, useRef, useState } from 'react'
+import type { PointerEvent as ReactPointerEvent } from 'react'
 import Container from '../Container'
 import HeroBookingBar from './HeroBookingBar'
 import HeroMiniSpec from './HeroMiniSpec'
@@ -25,6 +26,8 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
   const [textVisible, setTextVisible] = useState(true)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const textTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const dragStartX = useRef<number | null>(null)
+  const dragOffset = useRef(0)
 
   const transitionTextTo = (index: number) => {
     if (textTimeoutRef.current) clearTimeout(textTimeoutRef.current)
@@ -82,8 +85,49 @@ const HeroSliderClient = ({ cars, categories }: HeroSliderClientProps) => {
   const currentCategory =
     categories.find((category) => category.id === currentTextCar.category_id)?.name || 'Luxury'
 
+  const handlePointerDown = (event: ReactPointerEvent<HTMLElement>) => {
+    dragStartX.current = event.clientX
+    dragOffset.current = 0
+  }
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLElement>) => {
+    if (dragStartX.current === null) {
+      return
+    }
+
+    dragOffset.current = event.clientX - dragStartX.current
+  }
+
+  const handlePointerUp = () => {
+    if (dragStartX.current === null) {
+      return
+    }
+
+    const swipeDistance = dragOffset.current
+    dragStartX.current = null
+    dragOffset.current = 0
+
+    if (Math.abs(swipeDistance) < 50 || animating) {
+      return
+    }
+
+    if (swipeDistance > 0) {
+      goTo((currentIndex - 1 + cars.length) % cars.length)
+      return
+    }
+
+    goTo((currentIndex + 1) % cars.length)
+  }
+
   return (
-    <section className="relative z-20 w-full overflow-x-hidden overflow-y-visible bg-black min-h-180 sm:min-h-190 lg:min-h-215 xl:min-h-225 2xl:min-h-245">
+    <section
+      className="relative z-20 min-h-180 w-full  bg-black md:-mb-24 lg:-mb-28 xl:-mb-32 sm:min-h-190 lg:min-h-215 xl:min-h-225 2xl:min-h-245"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      onPointerLeave={handlePointerUp}
+    >
       <div className="absolute inset-0 overflow-visible">
         {prev && (
           <div
