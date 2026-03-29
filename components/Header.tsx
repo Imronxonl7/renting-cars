@@ -4,17 +4,17 @@ import { useEffect, useRef, useState } from 'react'
 import Container from './Container'
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Cars', href: '/cars' },
+  { label: 'Bosh sahifa', href: '/' },
+  { label: 'Biz haqimizda', href: '/about' },
+  { label: 'Xizmatlar', href: '/services' },
+  { label: 'Mashinalar', href: '/cars' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Teams', href: '/teams' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Jamoa', href: '/teams' },
+  { label: 'Bog‘lanish', href: '/contact' },
 ]
 
 const Header = () => {
-  const [active, setActive] = useState('Home')
+  const [active, setActive] = useState('Bosh sahifa')
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement | null>(null)
 
@@ -79,7 +79,7 @@ const Header = () => {
               </svg>
             </div>
             <div className="text-white">
-              <p className="text-[10px] text-gray-400 leading-none">Need help?</p>
+              <p className="text-[10px] text-gray-400 leading-none">Yordam kerakmi?</p>
               <p className="text-sm font-semibold leading-snug">855 100 4444</p>
             </div>
           </div>
@@ -87,7 +87,7 @@ const Header = () => {
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label="Open menu"
+            aria-label="Menyuni ochish"
             className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/20 text-white xl:hidden"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -138,7 +138,7 @@ const Header = () => {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-[10px] text-gray-400 leading-none">Need help?</p>
+                  <p className="text-[10px] text-gray-400 leading-none">Yordam kerakmi?</p>
                   <p className="text-sm font-semibold leading-snug">855 100 4444</p>
                 </div>
               </div>

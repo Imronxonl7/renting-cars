@@ -89,11 +89,11 @@ const CarsPage = async ({ searchParams }: CarsPageProps) => {
       <Container className="">
         <div className="mb-10 text-center sm:mb-12">
           <p className="mb-3 text-xs font-semibold tracking-[0.38em] text-[#edb458] uppercase">
-            Browse Cars
+            Mashinalarni ko‘ring
           </p>
           <h1 className="text-[clamp(2.4rem,5vw,4.2rem)] font-black leading-none tracking-[-0.03em]">
             <span className="text-white">{pageTitle} </span>
-            <span className="text-[#edb458]">Fleet</span>
+            <span className="text-[#edb458]">avtoparki</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-white/64 sm:text-base sm:leading-7">
             {pageDescription}
@@ -110,7 +110,7 @@ const CarsPage = async ({ searchParams }: CarsPageProps) => {
                   : 'border-white/12 text-white/72 hover:border-[#edb458] hover:text-[#edb458]'
               }`}
             >
-              All
+              Barchasi
             </Link>
             {categories.map((category) => (
               <Link
@@ -169,10 +169,10 @@ const CarsPage = async ({ searchParams }: CarsPageProps) => {
                         {car.model}
                       </h2>
                       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-white/68">
-                        <Spec label="Seats" value={String(car.seats ?? '-')} />
-                        <Spec label="Doors" value={String(car.doors ?? '-')} />
-                        <Spec label="Drive" value={car.transmission || '-'} />
-                        <Spec label="Fuel" value={car.fuel_type || '-'} />
+                        <Spec label="O‘rindiq" value={String(car.seats ?? '-')} />
+                        <Spec label="Eshik" value={String(car.doors ?? '-')} />
+                        <Spec label="Uzatma" value={car.transmission || '-'} />
+                        <Spec label="Yoqilg‘i" value={car.fuel_type || '-'} />
                       </div>
                     </div>
 
@@ -181,13 +181,13 @@ const CarsPage = async ({ searchParams }: CarsPageProps) => {
                         href={`/cars/${encodeURIComponent(car.id)}`}
                         className="inline-flex items-center rounded-full bg-[#edb458] px-5 py-2.5 text-sm font-bold text-[#1f1e1d] transition-colors duration-200 hover:bg-[#ddb04b]"
                       >
-                        Details
+                        Batafsil
                       </Link>
                       <p className="shrink-0 text-right text-[#edb458]">
                         <span className="text-[30px] font-black leading-none">
                           ${formatPrice(car.price_per_day)}
                         </span>
-                        <span className="text-base font-semibold text-white/80">/day</span>
+                        <span className="text-base font-semibold text-white/80">/kun</span>
                       </p>
                     </div>
                   </div>
@@ -210,7 +210,7 @@ const CarsPage = async ({ searchParams }: CarsPageProps) => {
                       : 'border-white/12 text-white/72 hover:border-[#edb458] hover:text-[#edb458]'
                   }`}
                 >
-                  Prev
+                  Oldingi
                 </Link>
 
                 {Array.from({ length: totalPages }, (_, index) => {
@@ -248,7 +248,7 @@ const CarsPage = async ({ searchParams }: CarsPageProps) => {
                       : 'border-white/12 text-white/72 hover:border-[#edb458] hover:text-[#edb458]'
                   }`}
                 >
-                  Next
+                  Keyingi
                 </Link>
               </div>
             )}

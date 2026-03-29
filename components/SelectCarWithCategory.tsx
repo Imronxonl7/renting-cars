@@ -22,11 +22,11 @@ const SelectCarWithCategory = async () => {
 
         <div className="mb-8 text-center sm:mb-10">
           <p className="mb-3 text-xs font-semibold tracking-[0.38em] text-[#edb458] uppercase">
-            Select By Category
+            Kategoriya bo‘yicha tanlang
           </p>
           <h2 className="text-[clamp(2.4rem,5vw,4.2rem)] font-black leading-none tracking-[-0.03em]">
-            <span className="text-white">Browse </span>
-            <span className="text-[#edb458]">Car Categories</span>
+            <span className="text-white">Mashina </span>
+            <span className="text-[#edb458]">kategoriyalari</span>
           </h2>
         </div>
 

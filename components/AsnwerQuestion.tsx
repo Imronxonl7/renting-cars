@@ -25,8 +25,8 @@ const AsnwerQuestion = async () => {
             FAQ
           </p>
           <h2 className="text-[clamp(2.4rem,5vw,4.2rem)] font-black leading-none tracking-[-0.03em]">
-            <span className="text-white">Frequently Asked </span>
-            <span className="text-[#edb458]">Questions</span>
+            <span className="text-white">Ko‘p so‘raladigan </span>
+            <span className="text-[#edb458]">savollar</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-white/60 sm:text-base sm:leading-7">
             Rental process, payment, delivery, and booking conditions bo&apos;yicha eng ko&apos;p

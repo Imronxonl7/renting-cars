@@ -8,7 +8,7 @@ import { blogPosts } from '@/data/blogPosts'
 import { getSupabaseRows } from '@/lib/supabase'
 import { Categories } from '@/types/Categories'
 
-const blogTags = ['Airport', 'Car', 'Limousine', 'Rental', 'Service']
+const blogTags = ['Aeroport', 'Mashina', 'Limuzin', 'Ijara', 'Xizmat']
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -63,7 +63,7 @@ async function BlogPage() {
         <Container className="relative flex min-h-105 items-center justify-center py-24">
           <div className="text-center">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.45em] text-[#edb458]">
-              Auto Stories
+              Avto hikoyalar
             </p>
             <h1 className="text-5xl font-black tracking-tight text-white md:text-7xl">
               Blog
@@ -99,7 +99,7 @@ async function BlogPage() {
                       {featuredPost.title}
                     </h2>
                     <p className="text-sm text-white/60">
-                      by {featuredPost.author}
+                      Muallif: {featuredPost.author}
                     </p>
                     <p className="max-w-3xl text-base leading-7 text-white/72">
                       {featuredPost.excerpt}
@@ -110,7 +110,7 @@ async function BlogPage() {
                     type="button"
                     className="rounded-xl bg-[#edb458] px-5 py-3 text-sm font-semibold text-[#1f1e1d] transition hover:bg-[#f6c46d]"
                   >
-                    Read More
+                    Batafsil
                   </button>
                 </div>
               </article>
@@ -119,7 +119,7 @@ async function BlogPage() {
                 <div className="flex items-center gap-4">
                   <div className="h-px flex-1 bg-white/10" />
                   <h2 className="text-center text-2xl font-bold">
-                    More Articles
+                    Yana maqolalar
                   </h2>
                   <div className="h-px flex-1 bg-white/10" />
                 </div>
@@ -129,7 +129,7 @@ async function BlogPage() {
 
             <aside className="space-y-8">
               <div className="rounded-[26px] bg-[#242424] p-6 shadow-[0_20px_45px_rgba(0,0,0,0.22)]">
-                <h3 className="mb-5 text-2xl font-bold">Recent Posts</h3>
+                <h3 className="mb-5 text-2xl font-bold">So‘nggi postlar</h3>
                 <div className="space-y-4">
                   {recentPosts.length > 0 ? (
                     recentPosts.map((post) => (
@@ -157,15 +157,14 @@ async function BlogPage() {
                     ))
                   ) : (
                     <p className="text-sm leading-6 text-white/60">
-                      Recent posts will appear here when the selected category
-                      has more than one article.
+                      Tanlangan category’da maqolalar ko‘payganda so‘nggi postlar shu yerda chiqadi.
                     </p>
                   )}
                 </div>
               </div>
 
               <div className="rounded-[26px] bg-[#242424] p-6 shadow-[0_20px_45px_rgba(0,0,0,0.22)]">
-                <h3 className="mb-5 text-2xl font-bold">Categories</h3>
+                <h3 className="mb-5 text-2xl font-bold">Kategoriyalar</h3>
                 <ul className="space-y-3 text-base text-white/72">
                   {categories.map((category) => (
                     <li key={category.id}>
@@ -184,7 +183,7 @@ async function BlogPage() {
               </div>
 
               <div className="rounded-[26px] bg-[#242424] p-6 shadow-[0_20px_45px_rgba(0,0,0,0.22)]">
-                <h3 className="mb-5 text-2xl font-bold">Tags</h3>
+                <h3 className="mb-5 text-2xl font-bold">Teglar</h3>
                 <div className="flex flex-wrap gap-3">
                   {blogTags.map((tag) => (
                     <span

@@ -10,9 +10,9 @@ interface Service {
 const services: Service[] = [
   {
     num: '01',
-    title: 'Daily Car Rental',
+    title: 'Kunlik avto ijara',
     description:
-      "Experience ultimate freedom on your terms. Pick up your premium vehicle, explore at your own pace, and return it when you're done.",
+      'O‘zingizga qulay paytda mashinani olib, bemalol yuring va ish bitgach qaytaring. Qulay va tezkor kunlik ijara xizmati.',
     icon: (
       <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
         <path
@@ -28,9 +28,9 @@ const services: Service[] = [
   },
   {
     num: '02',
-    title: 'Monthly Car Rental',
+    title: 'Oylik avto ijara',
     description:
-      'Commit to comfort without committing to ownership. Monthly plans give you rolling fleet upgrades with full concierge support and flexible returns.',
+      'Mashina sotib olmasdan ham uzoq muddat qulay foydalaning. Oylik tariflar moslashuvchan va xizmat darajasi yuqori.',
     icon: (
       <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
         <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
@@ -41,9 +41,9 @@ const services: Service[] = [
   },
   {
     num: '03',
-    title: 'Annual Car Rental',
+    title: 'Yillik avto ijara',
     description:
-      'Your personal fleet for the year ahead. Priority booking, dedicated account manager, unlimited swaps with luxury membership support.',
+      'Yil davomida shaxsiy parkdek foydalanish uchun premium yechim. Ustuvor bron, alohida menejer va yuqori darajadagi xizmat mavjud.',
     icon: (
       <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
         <path d="M12 2L3 7l9 5 9-5-9-5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
@@ -64,10 +64,10 @@ export default function ServicesSection() {
 
       <div className="mb-14 text-center">
         <p className="mb-3 text-xs font-bold tracking-[0.3em] text-[#edb458] uppercase">
-          · What We Do ·
+          · Bizning xizmatlar ·
         </p>
         <h2 className="text-4xl font-black tracking-[-0.02em] text-white md:text-5xl">
-          Other <span className="text-[#edb458]">Services</span>
+          Qo‘shimcha <span className="text-[#edb458]">xizmatlar</span>
         </h2>
       </div>
 
@@ -89,7 +89,7 @@ export default function ServicesSection() {
                   {service.icon}
                 </div>
 
-                <h3 className="mb-3 text-xl font-bold tracking-[-0.01em] text-[#e5e5e5] group-hover:text-white">
+                <h3 className="mb-3 line-clamp-2 text-xl font-bold tracking-[-0.01em] text-[#e5e5e5] group-hover:text-white">
                   {service.title}
                 </h3>
 
@@ -100,7 +100,7 @@ export default function ServicesSection() {
 
               <div className="mt-8 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#555] group-hover:text-[#edb458]">
-                  <span>Learn More</span>
+                  <span>Batafsil</span>
                   <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
                     <path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>

@@ -5,7 +5,7 @@ const ServiceHero = () => {
     <section className="relative isolate flex min-h-155 items-center justify-center overflow-hidden bg-[#1f1e1d] sm:min-h-170 lg:min-h-190">
       <Image
         src="/audi.jpg"
-        alt="Audi service hero background"
+        alt="Xizmatlar sahifasi foni"
         fill
         priority
         sizes="100vw"
@@ -20,13 +20,13 @@ const ServiceHero = () => {
           <div className="mb-5 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#edb458]" />
             <span className="text-[11px] font-semibold uppercase tracking-[0.38em] text-[#edb458] sm:text-xs">
-              What We Do
+              Biz nima qilamiz
             </span>
             <span className="h-px w-8 bg-[#edb458]" />
           </div>
 
           <h1 className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-[72px]">
-            Our <span className="text-[#edb458]">Services</span>
+            Bizning <span className="text-[#edb458]">xizmatlar</span>
           </h1>
         </div>
       </div>

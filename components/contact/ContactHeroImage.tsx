@@ -9,7 +9,7 @@ const ContactHeroImage = () => {
       <div className="relative min-h-[58svh] sm:min-h-[64svh] lg:min-h-[72svh] xl:min-h-[78svh]">
         <Image
           src={ContactHeroImages}
-          alt="Contact hero"
+          alt="Bog‘lanish sahifasi foni"
           fill
           priority
           className="object-cover"
@@ -21,10 +21,10 @@ const ContactHeroImage = () => {
         <Container className="relative flex min-h-[58svh] items-center justify-center pt-24 pb-20 text-center sm:min-h-[64svh] sm:pt-28 sm:pb-24 lg:min-h-[72svh] lg:pb-28 xl:min-h-[78svh]">
           <div className="max-w-3xl">
             <p className="mb-4 text-[11px] font-semibold tracking-[0.42em] text-[#edb458] uppercase sm:text-xs">
-              Get In Touch
+              Bog‘lanish
             </p>
             <h1 className="text-[clamp(2.35rem,9vw,5rem)] font-black leading-[0.94] tracking-[-0.04em]">
-              Contact <span className="text-[#edb458]">Us</span>
+              Biz bilan <span className="text-[#edb458]">bog‘laning</span>
             </h1>
           </div>
         </Container>
@@ -33,22 +33,22 @@ const ContactHeroImage = () => {
       <Container className="relative z-20 -mt-10 pb-16 sm:-mt-14 sm:pb-20 lg:-mt-18 lg:pb-24 xl:-mt-20">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 xl:gap-6">
           <ContactInfoCard
-            title="Email us"
+            title="Email yozing"
             value="info@drivora.com"
             icon={<MailIcon />}
           />
           <ContactInfoCard
-            title="Our address"
+            title="Manzilimiz"
             value="Tashkent City Park, Tashkent, Uzbekistan"
             icon={<LocationIcon />}
           />
           <ContactInfoCard
-            title="Opening Hours"
-            value="Mon-Sun: 8 AM - 7 PM"
+            title="Ish vaqti"
+            value="Dushanba-Yakshanba: 8:00 - 19:00"
             icon={<ClockIcon />}
           />
           <ContactInfoCard
-            title="Call us"
+            title="Qo‘ng‘iroq qiling"
             value="+91 0324-242-342"
             icon={<PhoneIcon />}
           />
@@ -71,7 +71,7 @@ const ContactInfoCard = ({
     className="group relative min-h-60 overflow-hidden rounded-3xl border border-white/8 bg-[#252421] px-6 py-7 text-white shadow-[0_18px_42px_rgba(0,0,0,0.24)] transition-all duration-300 hover:-translate-y-2 hover:border-transparent hover:bg-[#edb458] hover:text-[#1f1e1d] sm:min-h-66 sm:px-7 sm:py-8 xl:min-h-72 xl:rounded-[28px] xl:px-8 xl:py-9"
   >
     <div className="text-[#edb458] transition-colors duration-300 group-hover:text-[#1f1e1d]">{icon}</div>
-    <h3 className="mt-8 text-[1.9rem] font-black leading-[0.95] tracking-[-0.03em] sm:mt-9 sm:text-[2rem] xl:mt-10 xl:text-[2.15rem]">
+    <h3 className="mt-8 line-clamp-2 text-[1.9rem] font-black leading-[0.95] tracking-[-0.03em] sm:mt-9 sm:text-[2rem] xl:mt-10 xl:text-[2.15rem]">
       {title}
     </h3>
     <p className="mt-3 max-w-[18ch] text-base leading-7 text-white/58 transition-colors duration-300 group-hover:text-[#1f1e1d]/82 sm:mt-4 sm:text-[1.05rem] sm:leading-8">

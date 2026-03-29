@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import type { MouseEvent } from 'react'
 import type { PointerEvent as ReactPointerEvent } from 'react'
 import { useRef, useState } from 'react'
 import Container from '../Container'
@@ -17,6 +18,8 @@ const OurExpertsClient = ({ experts }: OurExpertsClientProps) => {
   const sliderRef = useRef<HTMLDivElement | null>(null)
   const dragStartX = useRef<number | null>(null)
   const dragStartScrollLeft = useRef(0)
+  const didDragRef = useRef(false)
+  const suppressClickRef = useRef(false)
   const [isDragging, setIsDragging] = useState(false)
 
   const scrollCards = (direction: 'left' | 'right') => {
@@ -37,10 +40,9 @@ const OurExpertsClient = ({ experts }: OurExpertsClientProps) => {
       return
     }
 
-    event.currentTarget.setPointerCapture(event.pointerId)
     dragStartX.current = event.clientX
     dragStartScrollLeft.current = sliderRef.current.scrollLeft
-    setIsDragging(true)
+    didDragRef.current = false
   }
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -49,12 +51,35 @@ const OurExpertsClient = ({ experts }: OurExpertsClientProps) => {
     }
 
     const distance = event.clientX - dragStartX.current
+
+    if (Math.abs(distance) > 6) {
+      didDragRef.current = true
+      setIsDragging(true)
+    }
+
     sliderRef.current.scrollLeft = dragStartScrollLeft.current - distance
   }
 
   const handlePointerUp = () => {
+    suppressClickRef.current = didDragRef.current
     dragStartX.current = null
+    didDragRef.current = false
     setIsDragging(false)
+
+    if (suppressClickRef.current) {
+      setTimeout(() => {
+        suppressClickRef.current = false
+      }, 0)
+    }
+  }
+
+  const handleCardClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!suppressClickRef.current) {
+      return
+    }
+
+    event.preventDefault()
+    event.stopPropagation()
   }
 
   return (
@@ -66,11 +91,11 @@ const OurExpertsClient = ({ experts }: OurExpertsClientProps) => {
 
         <div className="mb-10 text-center sm:mb-12">
           <p className="mb-3 text-xs font-semibold tracking-[0.38em] text-[#edb458] uppercase">
-            Certified Team
+            Ishonchli jamoa
           </p>
           <h2 className="text-[clamp(2.4rem,5vw,4.2rem)] font-black leading-none tracking-[-0.03em]">
-            <span className="text-white">Our Experts </span>
-            <span className="text-[#edb458]">Team</span>
+            <span className="text-white">Bizning ekspertlar </span>
+            <span className="text-[#edb458]">jamoasi</span>
           </h2>
         </div>
 
@@ -80,7 +105,7 @@ const OurExpertsClient = ({ experts }: OurExpertsClientProps) => {
               type="button"
               onClick={() => scrollCards('left')}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#252421] text-white transition-colors hover:border-[#edb458] hover:text-[#edb458]"
-              aria-label="Previous experts"
+              aria-label="Oldingi ekspertlar"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path
@@ -96,7 +121,7 @@ const OurExpertsClient = ({ experts }: OurExpertsClientProps) => {
               type="button"
               onClick={() => scrollCards('right')}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#252421] text-white transition-colors hover:border-[#edb458] hover:text-[#edb458]"
-              aria-label="Next experts"
+              aria-label="Keyingi ekspertlar"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path
@@ -127,6 +152,7 @@ const OurExpertsClient = ({ experts }: OurExpertsClientProps) => {
                   <Link
                     key={expert.id}
                     href={`/about/experts/${expert.id}`}
+                    onClick={handleCardClick}
                     onMouseEnter={() => setActiveId(expert.id)}
                     className={`group w-[78vw] shrink-0 overflow-hidden rounded-[28px] border text-left transition-all duration-300 sm:w-[46vw] lg:w-[calc((100%-20px)/3)] xl:w-[calc((100%-60px)/4)] 2xl:w-[calc((100%-80px)/5)] ${
                       isActive
@@ -139,6 +165,7 @@ const OurExpertsClient = ({ experts }: OurExpertsClientProps) => {
                         src={expert.image}
                         alt={expert.name}
                         fill
+                        draggable={false}
                         className={`object-cover transition-transform duration-500 ${
                           isActive ? 'scale-105' : 'group-hover:scale-105'
                         }`}

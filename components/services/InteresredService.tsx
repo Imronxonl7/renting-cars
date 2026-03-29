@@ -7,7 +7,7 @@ const InteresredService = () => {
       <div className="relative min-h-125 w-full overflow-hidden sm:min-h-140 lg:min-h-155">
         <Image
           src="/Aston.webp"
-          alt="Interested in renting background"
+          alt="Ijaraga qiziqish foni"
           fill
           priority
           sizes="100vw"
@@ -19,15 +19,15 @@ const InteresredService = () => {
 
         <div className="relative z-10 flex min-h-125 flex-col items-center justify-center px-6 text-center sm:min-h-140 lg:min-h-155">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.38em] text-[#edb458]">
-            Rent Your Car
+            Mashinangizni band qiling
           </p>
 
           <h2 className="max-w-[14ch] text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-[58px]">
-            Interested in Renting?
+            Mashina ijarasi kerakmi?
           </h2>
 
-          <p className="mt-4 text-sm text-white/70 sm:text-base">
-            Don&apos;t hesitate and send us a message.
+          <p className="mt-4 max-w-md text-sm text-white/70 sm:text-base">
+            O‘zingizga mos mashinani tanlash uchun biz bilan bog‘laning, qolganini birga hal qilamiz.
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
@@ -58,9 +58,9 @@ const InteresredService = () => {
 
             <Link
               href="/cars"
-                          className="inline-flex min-w-47.5 items-center justify-center gap-3 rounded-full border border-white/35 bg-black/18 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-colors duration-300 hover:bg-[#edb458] hover:text-[#1f1e1d]"
+              className="inline-flex min-w-47.5 items-center justify-center gap-3 rounded-full border border-white/35 bg-black/18 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-colors duration-300 hover:bg-[#edb458] hover:text-[#1f1e1d]"
             >
-              Rent Now
+              Hozir ijaraga olish
               <svg
                 className="h-4 w-4"
                 viewBox="0 0 24 24"

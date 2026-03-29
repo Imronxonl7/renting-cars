@@ -62,23 +62,23 @@ function ArrowUpRightIcon() {
 
 const contactItems = [
   {
-    title: "Call us",
+    title: "Qo‘ng‘iroq qiling",
     value: "+971 52-333-4444",
     icon: <PhoneIcon />,
   },
   {
-    title: "Write to us",
+    title: "Email yozing",
     value: "info@renax.com",
     icon: <MailIcon />,
   },
   {
-    title: "Address",
-    value: "Vadodara, Water Tower, Office 123",
+    title: "Manzil",
+    value: "Tashkent City Park, Toshkent",
     icon: <LocationIcon />,
   },
 ];
 
-const quickLinks = ["About", "Cars", "Car Types", "FAQ", "Contact"];
+const quickLinks = ["Biz haqimizda", "Mashinalar", "Mashina turlari", "FAQ", "Bog‘lanish"];
 
 const socialLinks = [
   { label: "Facebook", icon: <FacebookIcon />, href: "#" },
@@ -117,8 +117,7 @@ const Footer = () => {
               </h2>
             </Link>
             <p className="mt-6 text-lg leading-8 text-white/55">
-              Rent a car imperdiet sapien porttito the bibenum ellentesue the commodo
-              erat nesuen.
+              Premium avto ijara, qulay bron qilish va mijoz uchun yuqori darajadagi xizmatni bir joyda taqdim etamiz.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -136,12 +135,22 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-2xl font-semibold text-white">Quick Links</h3>
+            <h3 className="text-2xl font-semibold text-white">Tezkor havolalar</h3>
             <div className="mt-7 space-y-4">
               {quickLinks.map((link) => (
                 <Link
                   key={link}
-                  href="#"
+                  href={
+                    link === "Biz haqimizda"
+                      ? "/about"
+                      : link === "Mashinalar"
+                        ? "/cars"
+                        : link === "FAQ"
+                          ? "/#faq"
+                          : link === "Bog‘lanish"
+                            ? "/contact"
+                            : "/cars"
+                  }
                   className="flex items-center gap-4 text-lg text-white/60 transition hover:text-white"
                 >
                   <span className="h-2.5 w-2.5 rounded-full bg-[#edb458]" />
@@ -152,22 +161,21 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-2xl font-semibold text-white">Subscribe</h3>
+            <h3 className="text-2xl font-semibold text-white">Obuna bo‘ling</h3>
             <p className="mt-6 max-w-lg text-lg leading-8 text-white/55">
-              Want to be notified about our services? Just sign up and we&apos;ll send you a
-              notification by email.
+              Xizmatlarimiz va yangiliklardan xabardor bo‘lishni xohlaysizmi? Email qoldiring, sizga xabar yuboramiz.
             </p>
 
             <form className="mt-8">
               <label className="flex items-center rounded-full border border-[#8d6d2f] px-3 py-3 sm:px-4">
                 <input
                   type="email"
-                  placeholder="Your email address"
+                  placeholder="Email manzilingiz"
                   className="w-full bg-transparent px-3 text-base text-white outline-none placeholder:text-white/45"
                 />
                 <button
                   type="submit"
-                  aria-label="Subscribe"
+                  aria-label="Obuna bo‘lish"
                   className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#edb458] text-[#1f1f1f] transition hover:scale-105"
                 >
                   <ArrowUpRightIcon />
@@ -179,7 +187,7 @@ const Footer = () => {
 
         <div className="border-t border-white/5 py-6 text-center text-lg text-white/55">
           <p>
-            <span className="text-[#8f7ae3]">©</span> 2025. All Rights Reserved.{" "}
+            <span className="text-[#8f7ae3]">©</span> 2025. Barcha huquqlar himoyalangan.{" "}
             <span className="font-semibold text-white">ProjectKillersTeam</span>
           </p>
         </div>

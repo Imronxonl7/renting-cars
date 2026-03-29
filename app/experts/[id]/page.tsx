@@ -58,14 +58,14 @@ const ExpertDetailPage = async ({ params }: ExpertDetailPageProps) => {
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#edb458] transition-colors hover:text-white"
           >
             <span>←</span>
-            <span>Back to Experts</span>
+            <span>Ekspertlarga qaytish</span>
           </Link>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(360px,0.82fr)] lg:items-stretch xl:gap-10">
           <div className="rounded-[30px] border border-white/8 bg-[#252421] p-6 shadow-[0_18px_48px_rgba(0,0,0,0.24)] sm:p-8 lg:p-10">
             <p className="text-xs font-semibold tracking-[0.32em] text-[#edb458] uppercase">
-              Expert Profile
+              Ekspert profili
             </p>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
               {expert.name}
@@ -77,13 +77,13 @@ const ExpertDetailPage = async ({ params }: ExpertDetailPageProps) => {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <StatCard label="Experience" value={expert.experience} />
-              <StatCard label="Specialty" value={expert.specialty} />
+              <StatCard label="Tajriba" value={expert.experience} />
+              <StatCard label="Yo‘nalish" value={expert.specialty} />
             </div>
 
             <div className="mt-8 rounded-3xl border border-white/8 bg-[#1f1e1d] px-5 py-5 sm:px-6">
               <p className="text-xs font-semibold tracking-[0.28em] text-[#edb458] uppercase">
-                Personal Note
+                Shaxsiy fikr
               </p>
               <p className="mt-4 text-base leading-7 text-white/74 sm:text-lg">
                 &ldquo;{expert.quote}&rdquo;
