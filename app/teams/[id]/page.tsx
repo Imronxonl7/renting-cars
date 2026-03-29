@@ -5,27 +5,27 @@ import { notFound } from 'next/navigation'
 import Container from '@/components/Container'
 import { experts } from '@/components/about/experts.data'
 
-type ExpertDetailPageProps = {
+type TeamDetailPageProps = {
   params: Promise<{
     id: string
   }>
 }
 
-export const generateMetadata = async ({ params }: ExpertDetailPageProps): Promise<Metadata> => {
+export const generateMetadata = async ({ params }: TeamDetailPageProps): Promise<Metadata> => {
   const { id } = await params
   const expert = experts.find((item) => item.id === id)
 
   if (!expert) {
-    return { title: 'Expert Not Found' }
+    return { title: 'Team Member Not Found' }
   }
 
   return {
-    title: expert.name,
+    title: `${expert.name} | Team`,
     description: `${expert.name} - ${expert.role}`,
   }
 }
 
-const ExpertDetailPage = async ({ params }: ExpertDetailPageProps) => {
+const TeamDetailPage = async ({ params }: TeamDetailPageProps) => {
   const { id } = await params
   const expert = experts.find((item) => item.id === id)
 
@@ -38,18 +38,18 @@ const ExpertDetailPage = async ({ params }: ExpertDetailPageProps) => {
       <Container className="">
         <div className="mb-8">
           <Link
-            href="/about"
+            href="/teams"
             className="inline-flex items-center gap-2 text-sm font-semibold text-[#edb458] transition-colors hover:text-white"
           >
             <span>←</span>
-            <span>Back to About</span>
+            <span>Back to Team</span>
           </Link>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.88fr)_minmax(360px,0.82fr)] lg:items-stretch xl:gap-10">
           <div className="rounded-[30px] border border-white/8 bg-[#252421] p-6 shadow-[0_18px_48px_rgba(0,0,0,0.24)] sm:p-8 lg:p-10">
             <p className="text-xs font-semibold tracking-[0.32em] text-[#edb458] uppercase">
-              Expert Profile
+              Team Profile
             </p>
             <h1 className="mt-4 text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
               {expert.name}
@@ -65,7 +65,7 @@ const ExpertDetailPage = async ({ params }: ExpertDetailPageProps) => {
               <StatCard label="Specialty" value={expert.specialty} />
             </div>
 
-            <div className="mt-8 rounded-3xl border border-white/8 bg-[#1f1e1d] px-5 py-5 sm:px-6">
+            <div className="mt-8 rounded-[24px] border border-white/8 bg-[#1f1e1d] px-5 py-5 sm:px-6">
               <p className="text-xs font-semibold tracking-[0.28em] text-[#edb458] uppercase">
                 Personal Note
               </p>
@@ -76,7 +76,7 @@ const ExpertDetailPage = async ({ params }: ExpertDetailPageProps) => {
           </div>
 
           <div className="relative overflow-hidden rounded-[30px] border border-white/8 bg-[#252421] shadow-[0_18px_48px_rgba(0,0,0,0.24)]">
-            <div className="relative aspect-[0.92/1] min-h-105 w-full sm:min-h-130">
+            <div className="relative aspect-[0.92/1] min-h-[420px] w-full sm:min-h-[520px]">
               <Image
                 src={expert.image}
                 alt={expert.name}
@@ -107,4 +107,4 @@ const StatCard = ({ label, value }: { label: string; value: string }) => (
   </div>
 )
 
-export default ExpertDetailPage
+export default TeamDetailPage

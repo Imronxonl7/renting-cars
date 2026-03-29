@@ -7,19 +7,13 @@ export type Expert = {
   experience: string
   specialty: string
   quote: string
+  email: string
+  credentials: string[]
+  education: string
+  awards: string
 }
 
 export const experts: Expert[] = [
-  {
-    id: 'mia-jane',
-    name: 'Mia Jane',
-    role: 'Sales Director',
-    image: 'https://i.pravatar.cc/900?img=32',
-    bio: 'Mia premium rental requests bilan ishlaydi va mijozga aynan mos avtomobilni topishda juda kuchli.',
-    experience: '8 years',
-    specialty: 'Luxury bookings',
-    quote: 'Every rental should feel effortless from the first call to the final return.',
-  },
   {
     id: 'michael-brown',
     name: 'Michael Brown',
@@ -29,6 +23,24 @@ export const experts: Expert[] = [
     experience: '10 years',
     specialty: 'Corporate fleet',
     quote: 'Reliable mobility is not a feature, it is the standard our clients expect.',
+    email: 'michael@drivora.com',
+    credentials: ['Corporate Fleet Expert', 'MBA Degree', 'Advanced English'],
+    education: 'Corporate logistics, sales operations, and executive mobility management background.',
+    awards: 'Recognized for long-term fleet growth and best account continuity delivery.',
+  },
+  {
+    id: 'mia-jane',
+    name: 'Mia Jane',
+    role: 'Sales Director',
+    image: 'https://i.pravatar.cc/900?img=32',
+    bio: 'Mia premium rental requests bilan ishlaydi va mijozga aynan mos avtomobilni topishda juda kuchli.',
+    experience: '8 years',
+    specialty: 'Luxury bookings',
+    quote: 'Every rental should feel effortless from the first call to the final return.',
+    email: 'mia@drivora.com',
+    credentials: ['B Driver License', "Bachelor's Degree", 'Fluent English'],
+    education: 'Business administration and luxury mobility sales training with client-focused booking strategy specialization.',
+    awards: 'Top luxury booking advisor 2024 and highest premium client retention performer.',
   },
   {
     id: 'margaret-nancy',
@@ -39,6 +51,10 @@ export const experts: Expert[] = [
     experience: '7 years',
     specialty: 'VIP rentals',
     quote: 'Luxury service is built through timing, detail, and calm communication.',
+    email: 'margaret@drivora.com',
+    credentials: ['VIP Client Support', 'Hospitality Degree', 'Good English'],
+    education: 'Hospitality and premium guest relations training with concierge-level service practice.',
+    awards: 'Best VIP service specialist and premium delivery excellence recognition.',
   },
   {
     id: 'daniel-frost',
@@ -49,6 +65,10 @@ export const experts: Expert[] = [
     experience: '9 years',
     specialty: 'Daily operations',
     quote: 'Smooth operations are what make premium service feel natural.',
+    email: 'daniel@drivora.com',
+    credentials: ['Operations Lead', 'Logistics Certificate', 'B Driver License'],
+    education: 'Operational systems, mobility coordination, and fleet process supervision.',
+    awards: 'Operational consistency award and same-day turnaround excellence recognition.',
   },
   {
     id: 'emma-carter',
@@ -59,6 +79,10 @@ export const experts: Expert[] = [
     experience: '6 years',
     specialty: 'Client experience',
     quote: 'People remember how a service made them feel long after the drive ends.',
+    email: 'emma@drivora.com',
+    credentials: ['CX Specialist', 'Brand Strategy', 'Good English'],
+    education: 'Brand communication and customer experience design with hospitality background.',
+    awards: 'Client satisfaction excellence award and repeat-booking growth recognition.',
   },
   {
     id: 'alex-hayes',
@@ -69,6 +93,10 @@ export const experts: Expert[] = [
     experience: '11 years',
     specialty: 'Sports segment',
     quote: 'A high-performance car should be matched with the right driver and purpose.',
+    email: 'alex@drivora.com',
+    credentials: ['Performance Expert', 'Technical Sales', 'B Driver License'],
+    education: 'Automotive performance sales and enthusiast-focused product advisory experience.',
+    awards: 'Sports segment leadership award and best specialist advisor recognition.',
   },
   {
     id: 'sofia-reed',
@@ -79,6 +107,10 @@ export const experts: Expert[] = [
     experience: '5 years',
     specialty: 'Reservation planning',
     quote: 'Planning ahead is what keeps premium availability consistent.',
+    email: 'sofia@drivora.com',
+    credentials: ['Reservation Planning', 'Scheduling Systems', 'Fluent English'],
+    education: 'Reservation systems and demand planning with strong forecasting practice.',
+    awards: 'Peak-season planning recognition and booking accuracy excellence award.',
   },
   {
     id: 'liam-hart',
@@ -89,6 +121,10 @@ export const experts: Expert[] = [
     experience: '7 years',
     specialty: 'Vehicle logistics',
     quote: 'Precision in logistics saves time for both the team and the client.',
+    email: 'liam@drivora.com',
+    credentials: ['Logistics Coordinator', 'Dispatch Control', 'B Driver License'],
+    education: 'Vehicle routing, dispatch, and handover logistics with operational planning focus.',
+    awards: 'Delivery precision award and cross-city handover excellence recognition.',
   },
   {
     id: 'nora-blake',
@@ -99,6 +135,10 @@ export const experts: Expert[] = [
     experience: '8 years',
     specialty: 'Client retention',
     quote: 'Retention grows when people trust the service without hesitation.',
+    email: 'nora@drivora.com',
+    credentials: ['Retention Lead', 'Client Success', 'Good English'],
+    education: 'Customer success systems and long-term premium relationship management.',
+    awards: 'Retention growth award and service quality improvement recognition.',
   },
   {
     id: 'ethan-scott',
@@ -109,5 +149,9 @@ export const experts: Expert[] = [
     experience: '9 years',
     specialty: 'Fleet quality',
     quote: 'The vehicle itself should reflect the promise the brand makes.',
+    email: 'ethan@drivora.com',
+    credentials: ['Fleet Quality', 'Inspection Lead', 'B Driver License'],
+    education: 'Vehicle quality assurance and presentation standards across premium fleets.',
+    awards: 'Fleet presentation excellence and quality compliance achievement award.',
   },
 ]
