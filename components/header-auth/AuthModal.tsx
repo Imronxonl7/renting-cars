@@ -34,10 +34,10 @@ const AuthModal = ({
   onSubmit,
 }: AuthModalProps) => {
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-sm">
+    <div className="modal-backdrop fixed inset-0 z-100 flex items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-sm">
       <div
         ref={modalRef}
-        className="w-full max-w-xl rounded-4xl border border-white/10 bg-[#1f1e1d] p-6 text-white shadow-[0_24px_60px_rgba(0,0,0,0.35)] sm:p-8"
+        className="modal-surface w-full max-w-xl rounded-4xl border border-white/10 bg-[#1f1e1d] p-6 text-white shadow-[0_24px_60px_rgba(0,0,0,0.35)] sm:p-8"
       >
         <div className="flex items-center justify-between gap-4">
           <div>

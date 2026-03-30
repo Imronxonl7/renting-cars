@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   AUTH_EVENT_NAME,
   SEEN_BOOKING_NOTIFICATIONS_KEY,
@@ -10,6 +10,7 @@ import {
   getUserById,
   getUserBookings,
   requestAuthModal,
+  updateUserProfile,
   type CarBookingRecord,
   type UserRecord,
 } from '@/lib/usersAuth'
@@ -20,6 +21,15 @@ const ProfileClient = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [toastMessage, setToastMessage] = useState('')
+  const [editing, setEditing] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [confirmOpen, setConfirmOpen] = useState(false)
+  const [editName, setEditName] = useState('')
+  const [editEmail, setEditEmail] = useState('')
+  const [editPhone, setEditPhone] = useState('')
+  const [editAvatar, setEditAvatar] = useState('')
+  const userRef = useRef<UserRecord | null>(null)
+  const confirmRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     let active = true
@@ -61,8 +71,13 @@ const ProfileClient = () => {
         }
 
         setUser(currentUser)
+        userRef.current = currentUser
         setBookings(userBookings)
         setError('')
+        setEditName(currentUser.name)
+        setEditEmail(currentUser.email)
+        setEditPhone(currentUser.phone)
+        setEditAvatar(currentUser.avatar || '')
 
         const approvedBookings = userBookings.filter((booking) => booking.status === 'approved')
         const seenBookingIds = new Set(
@@ -107,6 +122,69 @@ const ProfileClient = () => {
   }, [])
 
   useEffect(() => {
+    const activeUser = userRef.current
+
+    if (!activeUser) {
+      return
+    }
+
+    const intervalId = window.setInterval(async () => {
+      try {
+        const latestBookings = await getUserBookings(activeUser.id)
+        setBookings((currentBookings) => {
+          const currentApprovedIds = new Set(
+            currentBookings
+              .filter((booking) => booking.status === 'approved')
+              .map((booking) => booking.id)
+          )
+
+          const nextApprovedBooking = latestBookings.find(
+            (booking) => booking.status === 'approved' && !currentApprovedIds.has(booking.id)
+          )
+
+          if (nextApprovedBooking) {
+            setToastMessage('Mashina arizangiz qabul qilindi.')
+
+            const seenBookingIds = new Set(
+              JSON.parse(window.localStorage.getItem(SEEN_BOOKING_NOTIFICATIONS_KEY) ?? '[]') as string[]
+            )
+
+            window.localStorage.setItem(
+              SEEN_BOOKING_NOTIFICATIONS_KEY,
+              JSON.stringify([...seenBookingIds, nextApprovedBooking.id])
+            )
+
+            try {
+              const audioContext = new window.AudioContext()
+              const oscillator = audioContext.createOscillator()
+              const gainNode = audioContext.createGain()
+
+              oscillator.type = 'triangle'
+              oscillator.frequency.setValueAtTime(880, audioContext.currentTime)
+              oscillator.frequency.exponentialRampToValueAtTime(1320, audioContext.currentTime + 0.18)
+
+              gainNode.gain.setValueAtTime(0.001, audioContext.currentTime)
+              gainNode.gain.exponentialRampToValueAtTime(0.08, audioContext.currentTime + 0.02)
+              gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.38)
+
+              oscillator.connect(gainNode)
+              gainNode.connect(audioContext.destination)
+              oscillator.start()
+              oscillator.stop(audioContext.currentTime + 0.4)
+            } catch {}
+          }
+
+          return latestBookings
+        })
+      } catch {}
+    }, 5000)
+
+    return () => {
+      window.clearInterval(intervalId)
+    }
+  }, [user?.id])
+
+  useEffect(() => {
     if (!toastMessage) {
       return
     }
@@ -120,11 +198,69 @@ const ProfileClient = () => {
     }
   }, [toastMessage])
 
+  useEffect(() => {
+    if (!confirmOpen) {
+      return
+    }
+
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!confirmRef.current?.contains(event.target as Node)) {
+        setConfirmOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handlePointerDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown)
+    }
+  }, [confirmOpen])
+
   const handleLogout = () => {
     clearStoredUserId()
+    userRef.current = null
     setUser(null)
     setBookings([])
     setError('Siz akkauntdan chiqdingiz.')
+    setConfirmOpen(false)
+  }
+
+  const handleSaveProfile = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    if (!user) {
+      return
+    }
+
+    setSaving(true)
+    setError('')
+
+    try {
+      const updatedUser = await updateUserProfile({
+        userId: user.id,
+        name: editName,
+        email: editEmail,
+        phone: editPhone,
+        avatar: editAvatar,
+      })
+
+      if (!updatedUser) {
+        setError('Profilni saqlashda xatolik yuz berdi.')
+        return
+      }
+
+      setUser(updatedUser)
+      setEditing(false)
+      window.dispatchEvent(new Event(AUTH_EVENT_NAME))
+    } catch (saveError) {
+      setError(
+        saveError instanceof Error
+          ? saveError.message
+          : 'Profilni saqlashda xatolik yuz berdi.'
+      )
+    } finally {
+      setSaving(false)
+    }
   }
 
   if (loading) {
@@ -205,26 +341,28 @@ const ProfileClient = () => {
           </div>
         </div>
 
-        <div className="rounded-4xl border border-white/8 bg-[#252421] p-8 text-white">
-          {user.avatar ? (
-            <Image
-              src={user.avatar}
-              alt={user.name}
-              width={96}
-              height={96}
-              unoptimized
-              className="h-24 w-24 rounded-full object-cover"
-            />
-          ) : (
-            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-[#edb458] text-2xl font-black text-[#1f1e1d]">
-              {user.name
-                .split(' ')
-                .map((part) => part[0])
-                .join('')
-                .slice(0, 2)
-                .toUpperCase()}
-            </div>
-          )}
+        <div className="flex flex-col rounded-4xl border border-white/8 bg-[#252421] p-8 text-white">
+          <div className="overflow-hidden rounded-4xl border border-white/8 bg-[#1f1e1d]">
+            {user.avatar ? (
+              <Image
+                src={user.avatar}
+                alt={user.name}
+                width={560}
+                height={560}
+                unoptimized
+                className="aspect-square w-full object-cover"
+              />
+            ) : (
+              <div className="flex aspect-square w-full items-center justify-center bg-[#edb458] text-6xl font-black text-[#1f1e1d]">
+                {user.name
+                  .split(' ')
+                  .map((part) => part[0])
+                  .join('')
+                  .slice(0, 2)
+                  .toUpperCase()}
+              </div>
+            )}
+          </div>
 
           <p className="mt-6 text-sm leading-7 text-white/70">
             Siz tizimga muvaffaqiyatli kirgansiz. Chiqmaguningizcha profilingiz headerda ko‘rinib turadi.
@@ -232,10 +370,18 @@ const ProfileClient = () => {
 
           <button
             type="button"
-            onClick={handleLogout}
+            onClick={() => setConfirmOpen(true)}
             className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold transition-colors hover:border-[#edb458] hover:text-[#edb458]"
           >
             Akkauntdan chiqish
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setEditing(true)}
+            className="mt-3 inline-flex w-full items-center justify-center rounded-full bg-[#edb458] px-5 py-3 text-sm font-semibold text-[#1f1e1d] transition-colors hover:bg-white"
+          >
+            Tahrirlash
           </button>
         </div>
       </div>
@@ -246,6 +392,95 @@ const ProfileClient = () => {
             Yangi xabar
           </p>
           <p className="mt-2 text-sm leading-6 text-white/80">{toastMessage}</p>
+        </div>
+      ) : null}
+
+      {editing ? (
+        <div className="fixed inset-0 z-120 flex items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-sm">
+          <div className="w-full max-w-xl rounded-4xl border border-white/10 bg-[#1f1e1d] p-6 text-white shadow-[0_24px_60px_rgba(0,0,0,0.35)] sm:p-8">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.32em] text-[#edb458] uppercase">
+                  Profil
+                </p>
+                <h3 className="mt-3 text-3xl font-black">Ma’lumotlarni tahrirlash</h3>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setEditing(false)}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white transition-colors hover:border-[#edb458] hover:text-[#edb458]"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveProfile} className="mt-6 space-y-5">
+              <Field label="Ism" value={editName} onChange={setEditName} type="text" />
+              <Field label="Email" value={editEmail} onChange={setEditEmail} type="email" />
+              <Field label="Telefon" value={editPhone} onChange={setEditPhone} type="tel" />
+              <Field label="Photo URL" value={editAvatar} onChange={setEditAvatar} type="url" required={false} />
+
+              <button
+                type="submit"
+                disabled={saving}
+                className="inline-flex w-full items-center justify-center rounded-full bg-[#edb458] px-6 py-3 text-sm font-bold text-[#1f1e1d] transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {saving ? 'Saqlanmoqda...' : 'Saqlash'}
+              </button>
+            </form>
+          </div>
+        </div>
+      ) : null}
+
+      {confirmOpen ? (
+        <div className="fixed inset-0 z-120 flex items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-sm">
+          <div
+            ref={confirmRef}
+            className="w-full max-w-md rounded-4xl border border-white/10 bg-[#1f1e1d] p-6 text-white shadow-[0_24px_60px_rgba(0,0,0,0.35)] sm:p-8"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.32em] text-[#edb458] uppercase">
+                  Tasdiqlash
+                </p>
+                <h3 className="mt-3 text-2xl font-black">
+                  Siz akkauntni tark etasizmi?
+                </h3>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setConfirmOpen(false)}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white transition-colors hover:border-[#edb458] hover:text-[#edb458]"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="inline-flex flex-1 items-center justify-center rounded-full bg-[#edb458] px-5 py-3 text-sm font-bold text-[#1f1e1d] transition-colors hover:bg-white"
+              >
+                Ha, chiqaman
+              </button>
+              <button
+                type="button"
+                onClick={() => setConfirmOpen(false)}
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[#edb458] hover:text-[#edb458]"
+              >
+                Yo‘q, qolaman
+              </button>
+            </div>
+          </div>
         </div>
       ) : null}
     </>
@@ -268,5 +503,30 @@ const formatBookingStatus = (status: string) => {
 
   return labels[status] ?? status
 }
+
+const Field = ({
+  label,
+  value,
+  onChange,
+  type,
+  required = true,
+}: {
+  label: string
+  value: string
+  onChange: (value: string) => void
+  type: string
+  required?: boolean
+}) => (
+  <label className="block">
+    <span className="mb-2 block text-sm font-semibold text-white">{label}</span>
+    <input
+      required={required}
+      type={type}
+      value={value}
+      onChange={(event) => onChange(event.target.value)}
+      className="w-full rounded-3xl border border-white/10 bg-[#252421] px-5 py-3 text-white outline-none transition-colors placeholder:text-white/35 focus:border-[#edb458]"
+    />
+  </label>
+)
 
 export default ProfileClient

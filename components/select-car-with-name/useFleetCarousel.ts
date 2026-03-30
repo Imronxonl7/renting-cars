@@ -13,6 +13,7 @@ export const useFleetCarousel = ({ fleetLength }: UseFleetCarouselOptions) => {
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const dragStartX = useRef<number | null>(null)
+  const didDrag = useRef(false)
 
   const goPrev = () => {
     setActiveIndex((current) => getWrappedIndex(current - 1, fleetLength))
@@ -23,9 +24,8 @@ export const useFleetCarousel = ({ fleetLength }: UseFleetCarouselOptions) => {
   }
 
   const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    event.currentTarget.setPointerCapture(event.pointerId)
     dragStartX.current = event.clientX
-    setIsDragging(true)
+    didDrag.current = false
   }
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -34,6 +34,10 @@ export const useFleetCarousel = ({ fleetLength }: UseFleetCarouselOptions) => {
     }
 
     const nextOffset = event.clientX - dragStartX.current
+    if (Math.abs(nextOffset) > 6) {
+      didDrag.current = true
+      setIsDragging(true)
+    }
     setDragOffset(Math.max(-160, Math.min(160, nextOffset)))
   }
 
@@ -49,11 +53,13 @@ export const useFleetCarousel = ({ fleetLength }: UseFleetCarouselOptions) => {
     setIsDragging(false)
 
     if (Math.abs(dragDistance) < 55) {
+      didDrag.current = false
       setDragOffset(0)
       return
     }
 
     setDragOffset(0)
+    didDrag.current = false
 
     if (dragDistance > 0) {
       goPrev()
@@ -67,6 +73,7 @@ export const useFleetCarousel = ({ fleetLength }: UseFleetCarouselOptions) => {
     dragStartX.current = null
     setIsDragging(false)
     setDragOffset(0)
+    didDrag.current = false
   }
 
   return {

@@ -193,6 +193,44 @@ export const createUser = async ({ name, email, phone, avatar }: CreateUserPaylo
   return created[0] ?? null
 }
 
+export const updateUserProfile = async ({
+  userId,
+  name,
+  email,
+  phone,
+  avatar,
+}: {
+  userId: string
+  name: string
+  email: string
+  phone: string
+  avatar?: string
+}) => {
+  const response = await fetch(
+    buildRestUrl('users', {
+      id: `eq.${userId}`,
+    }),
+    {
+      method: 'PATCH',
+      headers: getHeaders(true),
+      body: JSON.stringify({
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        phone: phone.trim(),
+        avatar: buildAvatarUrl(name, email, avatar),
+      }),
+    }
+  )
+
+  if (!response.ok) {
+    throw new Error(`Profilni saqlashda xatolik: ${response.status}`)
+  }
+
+  const updated = (await response.json()) as UserRecord[]
+
+  return updated[0] ?? null
+}
+
 export const createCarBooking = async ({
   carId,
   userId,
