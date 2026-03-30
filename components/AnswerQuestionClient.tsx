@@ -23,7 +23,7 @@ const AnswerQuestionClient = ({ items }: AnswerQuestionClientProps) => {
             <button
               type="button"
               onClick={() => setOpenId((current) => (current === item.id ? null : item.id))}
-              className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6 sm:py-6"
+              className="cursor-pointer flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6 sm:py-6"
               aria-expanded={isOpen}
             >
               <div className="flex min-w-0 items-center gap-4">
