@@ -108,7 +108,7 @@ const ContactFormSection = () => {
 
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center rounded-full bg-[#edb458] px-8 py-3.5 text-sm font-bold text-[#1f1e1d] transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:px-10 sm:py-4 sm:text-base"
+                className="cursor-pointer inline-flex w-full items-center justify-center rounded-full bg-[#edb458] px-8 py-3.5 text-sm font-bold text-[#1f1e1d] transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:px-10 sm:py-4 sm:text-base"
               >
                 Yuborish
               </button>
