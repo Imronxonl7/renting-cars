@@ -54,7 +54,7 @@ const FleetCard = ({
         />
       </div>
 
-      <div className="flex flex-col gap-4 px-5 py-5 transition-[opacity,transform] duration-900 ease-[cubic-bezier(0.16,1,0.3,1)] sm:px-6 sm:py-6">
+      <div className="relative z-20 flex flex-col gap-4 px-5 py-5 transition-[opacity,transform] duration-900 ease-[cubic-bezier(0.16,1,0.3,1)] sm:px-6 sm:py-6">
         <div>
           <h3 className="line-clamp-1 text-2xl font-extrabold text-white sm:text-[32px]">
             {car.model}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import CarBookingAction from '@/components/booking/CarBookingAction'
 import Container from '@/components/Container'
 import { getSupabaseRows } from '@/lib/supabase'
 import type { Cars } from '@/types/Cars'
@@ -156,12 +157,12 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href="#rent-now"
-                className="inline-flex items-center rounded-full bg-[#edb458] px-6 py-3 text-sm font-bold text-[#1a1917] transition-colors hover:bg-[#ddb04b]"
-              >
-                Hozir ijaraga olish
-              </Link>
+              <CarBookingAction
+                carId={car.id}
+                carModel={car.model}
+                pricePerDay={car.price_per_day}
+                variant="hero"
+              />
               <Link
                 href="/cars"
                 className="inline-flex items-center rounded-full border border-white/14 px-6 py-3 text-sm font-semibold text-white/88 transition-colors hover:border-[#edb458] hover:text-[#edb458]"
@@ -255,12 +256,11 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
               </div>
 
               <div className="mt-8 space-y-3">
-                <Link
-                  href={`/cars?model=${encodeURIComponent(car.id)}`}
-                  className="inline-flex w-full items-center justify-center rounded-2xl bg-[#edb458] px-5 py-4 text-lg font-semibold text-[#1a1917] transition-colors hover:bg-[#ddb04b]"
-                >
-                  Hozir ijaraga olish
-                </Link>
+                <CarBookingAction
+                  carId={car.id}
+                  carModel={car.model}
+                  pricePerDay={car.price_per_day}
+                />
                 <p className="text-center text-sm leading-6 text-white/48">
                   Manzil: {car.city || 'So‘rov asosida'}
                 </p>

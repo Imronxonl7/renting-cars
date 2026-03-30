@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import Container from './Container'
+import HeaderAuthClient from './header-auth/HeaderAuthClient'
 
 const navLinks = [
   { label: 'Bosh sahifa', href: '/' },
@@ -71,8 +72,8 @@ const Header = () => {
             </ul>
           </nav>
 
-          {/* Phone */}
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-4 lg:flex">
+            <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full border border-[#edb458] flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#edb458" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/>
@@ -82,6 +83,8 @@ const Header = () => {
               <p className="text-[10px] text-gray-400 leading-none">Yordam kerakmi?</p>
               <p className="text-sm font-semibold leading-snug">855 100 4444</p>
             </div>
+            </div>
+            <HeaderAuthClient />
           </div>
 
           <button
@@ -142,6 +145,8 @@ const Header = () => {
                   <p className="text-sm font-semibold leading-snug">855 100 4444</p>
                 </div>
               </div>
+
+              <HeaderAuthClient mobile />
             </div>
           </div>
         )}

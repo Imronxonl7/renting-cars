@@ -1,13 +1,11 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from "@/lib/usersAuth";
 
 type UseApiParams = {
   url: string;
 };
-
-const SUPABASE_URL = "https://ikpfkhvdwjrblaiyniru.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_SbG03902HzuTqSDtUIqsQQ_PE0BqWfA";
 
 const useApi = <T,>({ url }: UseApiParams) => {
   const [data, setData] = useState<T[]>([]);
