@@ -99,7 +99,7 @@ export default function ServicesSection() {
               </div>
 
               <div className="mt-8 flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#555] group-hover:text-[#edb458]">
+                <div className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#555] group-hover:text-[#edb458] cursor-pointer">
                   <span>Batafsil</span>
                   <svg width="12" height="12" fill="none" viewBox="0 0 12 12">
                     <path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

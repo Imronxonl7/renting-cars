@@ -160,7 +160,7 @@ const TeamsGridClient = ({ experts }: TeamsGridClientProps) => {
                   key={tab}
                   type="button"
                   onClick={() => setActiveTab(tab)}
-                  className={`text-sm font-bold transition-colors ${
+                  className={`text-sm font-bold transition-colors cursor-pointer ${
                     activeTab === tab ? 'text-[#edb458]' : 'text-white/82 hover:text-white'
                   }`}
                 >

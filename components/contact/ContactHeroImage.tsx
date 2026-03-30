@@ -31,7 +31,7 @@ const ContactHeroImage = () => {
       </div>
 
       <Container className="relative z-20 -mt-10 pb-16 sm:-mt-14 sm:pb-20 lg:-mt-18 lg:pb-24 xl:-mt-20">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 xl:gap-6">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 xl:gap-6 cursor-pointer">
           <ContactInfoCard
             title="Email yozing"
             value="info@drivora.com"

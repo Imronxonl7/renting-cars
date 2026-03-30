@@ -54,6 +54,8 @@ const RentNow = async () => {
             submit: 'Qidirish',
           }}
           className="flex w-full max-w-6xl flex-col overflow-visible rounded-2xl border border-white/10 bg-[#111111]/90 backdrop-blur-sm md:flex-row md:items-stretch"
+          fieldClassName="cursor-pointer"
+          submitClassName="cursor-pointer"
           showSubmitButton={false}
         />
       </div>
