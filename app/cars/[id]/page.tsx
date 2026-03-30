@@ -21,13 +21,31 @@ export const generateMetadata = async ({ params }: CarDetailPageProps): Promise<
 
   if (!car) {
     return {
-      title: 'Car Not Found',
+      title: 'Mashina Topilmadi',
     }
   }
 
   return {
-    title: car.model,
-    description: car.description || `${car.model} uchun premium rental detail sahifasi.`,
+    title: `${car.model} | Mashina`,
+    description: car.description || `${car.model} uchun premium avto ijara sahifasi.`,
+    openGraph: {
+      title: `${car.model} | Renting Cars`,
+      description:
+        car.description || `${car.model} uchun premium avto ijara sahifasi.`,
+      url: `/cars/${id}`,
+      type: 'website',
+      images: car.images?.[0] ? [car.images[0]] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${car.model} | Renting Cars`,
+      description:
+        car.description || `${car.model} uchun premium avto ijara sahifasi.`,
+      images: car.images?.[0] ? [car.images[0]] : undefined,
+    },
+    alternates: {
+      canonical: `/cars/${id}`,
+    },
   }
 }
 
@@ -56,59 +74,59 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
   const galleryImages = car.images?.length ? car.images : ['/rentax.jpg']
 
   const generalInfo = [
-    '24/7 Roadside Assistance',
-    'Free Cancellation & Return',
-    'Pay at Arrival',
+    '24/7 yo‘l yordami',
+    'Bekor qilish va qaytarish imkoniyati',
+    'Kelganda to‘lash mumkin',
   ]
 
   const rentalConditions = [
     {
-      title: '1. Contract and Annexes',
+      title: '1. Shartnoma va ilovalar',
       content:
-        'Every rental is completed with a signed agreement and vehicle handover checklist. We document the vehicle condition before pickup so both sides have a clear record.',
+        'Har bir ijara imzolangan shartnoma va mashinani topshirish dalolatnomasi bilan rasmiylashtiriladi. Olib ketishdan oldin avtomobil holati qayd qilinadi.',
     },
     {
-      title: '2. Driving License and Age',
+      title: '2. Haydovchilik guvohnomasi va yosh',
       content:
-        `The primary driver should be at least ${Math.max(21, car.year ? 25 : 21)} years old and hold a valid driving license. International guests may be asked to provide a passport or additional ID at pickup.`,
+        `Asosiy haydovchi kamida ${Math.max(21, car.year ? 25 : 21)} yoshda bo‘lishi va amaldagi haydovchilik guvohnomasiga ega bo‘lishi kerak. Zarur holatda qo‘shimcha hujjat so‘ralishi mumkin.`,
     },
     {
-      title: '3. Prices',
+      title: '3. Narxlar',
       content:
-        `Daily rental starts from $${formatPrice(car.price_per_day)}. Weekly and monthly pricing can be discussed depending on duration, season, and delivery preferences.`,
+        `Kunlik ijara narxi $${formatPrice(car.price_per_day)} dan boshlanadi. Haftalik va oylik narxlar muddat hamda xizmat turiga qarab kelishiladi.`,
     },
     {
-      title: '4. Payments',
+      title: '4. To‘lov',
       content:
-        `The total rental fee is collected at the time of rental. Minimum rental period is ${car.min_rent_days || 1} day. Deposit amount for this vehicle is $${formatPrice(car.deposit)}.`,
+        `Ijara to‘lovi ijara vaqtida qabul qilinadi. Minimal ijara muddati ${car.min_rent_days || 1} kun. Ushbu avtomobil uchun depozit miqdori $${formatPrice(car.deposit)}.`,
     },
     {
-      title: '5. Delivery',
+      title: '5. Yetkazib berish',
       content:
-        `Pickup city for this car is ${car.city || 'our main location'}. Delivery options can be arranged depending on schedule and destination.`,
+        `Ushbu avtomobilni olib ketish shahri ${car.city || 'asosiy lokatsiyamiz'} hisoblanadi. Yetkazib berish xizmati jadval va manzilga qarab kelishiladi.`,
     },
     {
-      title: '6. Traffic Fines',
+      title: '6. Jarimalar',
       content:
-        'Any fines, toll charges, or parking penalties incurred during the rental period are the responsibility of the renter and may be deducted from the deposit if unpaid.',
+        'Ijara davomida yuzaga kelgan jarima, pullik yo‘l yoki parkovka to‘lovlari ijarachining zimmasida bo‘ladi va zarurat bo‘lsa depozitdan ushlab qolinadi.',
     },
   ]
 
   const specs = [
-    { label: 'Doors', value: String(car.doors ?? '-') },
-    { label: 'Passengers', value: String(car.seats ?? '-') },
-    { label: 'Transmission', value: car.transmission || '-' },
-    { label: 'Engine', value: car.engine || '-' },
-    { label: 'Fuel Type', value: car.fuel_type || '-' },
-    { label: 'Air Condition', value: car.air_conditioning ? 'Yes' : 'No' },
+    { label: 'Eshiklar', value: String(car.doors ?? '-') },
+    { label: 'Yo‘lovchilar', value: String(car.seats ?? '-') },
+    { label: 'Uzatma', value: car.transmission || '-' },
+    { label: 'Dvigatel', value: car.engine || '-' },
+    { label: 'Yoqilg‘i turi', value: car.fuel_type || '-' },
+    { label: 'Konditsioner', value: car.air_conditioning ? 'Bor' : 'Yo‘q' },
   ]
 
   const features = [
     car.bluetooth ? 'Bluetooth' : null,
-    car.gps ? 'GPS Navigation' : null,
-    car.parking_sensors ? 'Parking Sensors' : null,
-    car.rear_camera ? 'Rear Camera' : null,
-    car.cruise_control ? 'Cruise Control' : null,
+    car.gps ? 'GPS navigatsiya' : null,
+    car.parking_sensors ? 'Park sensorlari' : null,
+    car.rear_camera ? 'Orqa kamera' : null,
+    car.cruise_control ? 'Kruiz nazorati' : null,
   ].filter((feature): feature is string => Boolean(feature))
 
   return (
@@ -142,13 +160,13 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
                 href="#rent-now"
                 className="inline-flex items-center rounded-full bg-[#edb458] px-6 py-3 text-sm font-bold text-[#1a1917] transition-colors hover:bg-[#ddb04b]"
               >
-                Rent Now
+                Hozir ijaraga olish
               </Link>
               <Link
                 href="/cars"
                 className="inline-flex items-center rounded-full border border-white/14 px-6 py-3 text-sm font-semibold text-white/88 transition-colors hover:border-[#edb458] hover:text-[#edb458]"
               >
-                Back to Cars
+                Mashinalarga qaytish
               </Link>
             </div>
           </div>
@@ -159,7 +177,7 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start xl:grid-cols-[minmax(0,1fr)_360px]">
           <div>
             <section>
-              <h2 className="text-3xl font-extrabold text-white">General Information</h2>
+              <h2 className="text-3xl font-extrabold text-white">Umumiy ma’lumot</h2>
               <p className="mt-5 max-w-3xl text-sm leading-7 text-white/60 sm:text-base">
                 Enjoy a premium car rental experience with top-notch services and flexible conditions.
               </p>
@@ -175,7 +193,7 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
 
               {features.length > 0 && (
                 <div className="mt-10">
-                  <h3 className="text-xl font-bold text-white">Included Features</h3>
+                  <h3 className="text-xl font-bold text-white">Mavjud qulayliklar</h3>
                   <div className="mt-5 flex flex-wrap gap-3">
                     {features.map((feature) => (
                       <span
@@ -190,14 +208,14 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
               )}
 
               <div className="mt-12">
-                <h2 className="text-3xl font-extrabold text-white">Rental Conditions</h2>
+                <h2 className="text-3xl font-extrabold text-white">Ijara shartlari</h2>
                 <div className="mt-6">
                   <CarDetailAccordion items={rentalConditions} />
                 </div>
               </div>
 
               <div className="mt-12">
-                <h2 className="text-3xl font-extrabold text-white">Gallery</h2>
+                <h2 className="text-3xl font-extrabold text-white">Galereya</h2>
                 <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                   {galleryImages.slice(0, 6).map((image, index) => (
                     <div
@@ -223,7 +241,7 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
               <div className="text-center">
                 <p className="text-[2rem] font-black leading-none text-[#edb458]">
                   ${formatPrice(car.price_per_day)}
-                  <span className="ml-2 text-lg font-semibold text-white">/ Rent Per Day</span>
+                  <span className="ml-2 text-lg font-semibold text-white">/ kunlik ijara</span>
                 </p>
               </div>
 
@@ -241,10 +259,10 @@ const CarDetailPage = async ({ params }: CarDetailPageProps) => {
                   href={`/cars?model=${encodeURIComponent(car.id)}`}
                   className="inline-flex w-full items-center justify-center rounded-2xl bg-[#edb458] px-5 py-4 text-lg font-semibold text-[#1a1917] transition-colors hover:bg-[#ddb04b]"
                 >
-                  Rent Now
+                  Hozir ijaraga olish
                 </Link>
                 <p className="text-center text-sm leading-6 text-white/48">
-                  Location: {car.city || 'Available on request'}
+                  Manzil: {car.city || 'So‘rov asosida'}
                 </p>
               </div>
             </div>

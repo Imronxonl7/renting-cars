@@ -76,11 +76,11 @@ const TeamsGridClient = ({ experts }: TeamsGridClientProps) => {
 
         <div className="mb-10 text-center sm:mb-12">
           <p className="mb-3 text-xs font-semibold tracking-[0.38em] text-[#edb458] uppercase">
-            Certified Team
+            Ishonchli jamoa
           </p>
           <h2 className="text-[clamp(2.4rem,5vw,4.2rem)] font-black leading-none tracking-[-0.03em]">
-            <span className="text-white">Meet Our </span>
-            <span className="text-[#edb458]">Experts</span>
+            <span className="text-white">Bizning </span>
+            <span className="text-[#edb458]">ekspertlar</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-white/60 sm:text-base sm:leading-7">
             Booking strategy, VIP service, client experience, and fleet quality bo&apos;yicha ishlaydigan
@@ -118,7 +118,7 @@ const TeamsGridClient = ({ experts }: TeamsGridClientProps) => {
             </div>
 
             <p className="mt-4 text-sm text-white/56">
-              My e-mail address:{' '}
+              Email manzilim:{' '}
               <a href={`mailto:${activeExpert.email}`} className="text-white underline underline-offset-4">
                 {activeExpert.email}
               </a>
@@ -127,13 +127,12 @@ const TeamsGridClient = ({ experts }: TeamsGridClientProps) => {
 
           <div className="pt-2">
             <h3 className="max-w-3xl text-[clamp(2rem,4vw,3.25rem)] font-black leading-[1.08] tracking-[-0.03em] text-white">
-              Hello, I&apos;m {activeExpert.name}. I work as your {activeExpert.role.toLowerCase()} at
-              Drivora Luxury Car Rental.
+              Salom, men {activeExpert.name}. Men Drivora’da {activeExpert.role.toLowerCase()} sifatida ishlayman.
             </h3>
 
             <p className="mt-6 max-w-3xl text-sm leading-7 text-white/58 sm:text-base">
-              {activeExpert.quote} We focus on reliable booking support, premium client experience,
-              and smooth communication from the first request to final handover.
+              {activeExpert.quote} Biz ishonchli bron yordami, premium xizmat va birinchi murojaatdan
+              mashina topshirilguncha silliq aloqa jarayoniga katta e’tibor beramiz.
             </p>
 
             <div className="mt-8 space-y-4">
@@ -165,7 +164,7 @@ const TeamsGridClient = ({ experts }: TeamsGridClientProps) => {
                     activeTab === tab ? 'text-[#edb458]' : 'text-white/82 hover:text-white'
                   }`}
                 >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  {tab === 'biography' ? 'Biografiya' : tab === 'education' ? 'Ta’lim' : 'Yutuqlar'}
                 </button>
               ))}
             </div>
@@ -182,7 +181,7 @@ const TeamsGridClient = ({ experts }: TeamsGridClientProps) => {
               type="button"
               onClick={() => scrollCards('left')}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#252421] text-white transition-colors hover:border-[#edb458] hover:text-[#edb458]"
-              aria-label="Previous team members"
+              aria-label="Oldingi jamoa a’zolari"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -192,7 +191,7 @@ const TeamsGridClient = ({ experts }: TeamsGridClientProps) => {
               type="button"
               onClick={() => scrollCards('right')}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#252421] text-white transition-colors hover:border-[#edb458] hover:text-[#edb458]"
-              aria-label="Next team members"
+              aria-label="Keyingi jamoa a’zolari"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path d="m9 18 6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

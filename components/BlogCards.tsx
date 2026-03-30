@@ -69,13 +69,13 @@ function BlogCards({ posts = defaultBlogPosts }: { posts?: BlogPost[] }) {
                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                   />
                 </svg>
-                {post.author}
+                Muallif: {post.author}
               </span>
             </div>
-            <h3 className="mb-2 text-sm font-semibold leading-snug text-white transition-colors duration-200 group-hover:text-[#edb458]">
+            <h3 className="mb-2 line-clamp-2 text-sm font-semibold leading-snug text-white transition-colors duration-200 group-hover:text-[#edb458]">
               {post.title}
             </h3>
-            <p className="text-sm leading-6 text-white/60">{post.excerpt}</p>
+            <p className="line-clamp-3 text-sm leading-6 text-white/60">{post.excerpt}</p>
           </div>
         </article>
       ))}

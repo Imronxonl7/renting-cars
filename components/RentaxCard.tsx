@@ -64,7 +64,7 @@ const RentaxCard = () => {
           type="button"
           onClick={() => setIsPlaying((current) => !current)}
           aria-label={isPlaying ? 'Videoni yopish' : 'Videoni ijro etish'}
-          className="absolute -bottom-6 left-5 flex h-16 w-16 items-center justify-center rounded-full border border-[#edb458]/55 bg-[#262422] text-[#edb458] shadow-[0_18px_35px_rgba(0,0,0,0.28)] transition-all duration-200 hover:scale-105 hover:border-[#edb458] hover:bg-[#2d2a27] sm:left-6 sm:h-18.5 sm:w-18.5 lg:-bottom-7 lg:left-8"
+          className="cursor-pointer absolute -bottom-6 left-5 flex h-16 w-16 items-center justify-center rounded-full border border-[#edb458]/55 bg-[#262422] text-[#edb458] shadow-[0_18px_35px_rgba(0,0,0,0.28)] transition-all duration-200 hover:scale-105 hover:border-[#edb458] hover:bg-[#2d2a27] sm:left-6 sm:h-18.5 sm:w-18.5 lg:-bottom-7 lg:left-8"
         >
           <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#edb458]/35 bg-[#1f1e1d] sm:h-13 sm:w-13">
             {isPlaying ? (

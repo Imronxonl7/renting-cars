@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const features = ['Sports and Luxury Cars', 'Economy Cars']
+const features = ['Sport va premium mashinalar', 'Tejamkor mashinalar']
 
 const RentaxText = () => {
   return (
@@ -13,17 +13,16 @@ const RentaxText = () => {
       </div>
 
       <h2 className="max-w-[14ch] text-4xl font-black leading-[1.02] text-white sm:text-5xl xl:max-w-none xl:text-[56px]">
-        We Are More Than
+        Biz oddiy ijara
       </h2>
       <h2 className="mb-6 max-w-[16ch] text-4xl font-black leading-[1.02] text-[#edb458] sm:text-5xl xl:max-w-none xl:text-[56px]">
-        A Car Rental Company
+        kompaniyasidan ko‘prog‘imiz
       </h2>
 
       <p className="mb-8 max-w-155 text-sm leading-7 text-white/55 sm:text-[15px]">
-        Car repair quisque sodales dui ut varius vestibulum drana tortor turpis
-        portition tellus eu euismod nisl massa nutodio in the miss volume place
-        urna lacinia eros nuntna urna mauris vehicula rutrum in the miss on
-        volume interdum.
+        Biz mijozga shunchaki mashina berib qo‘yadigan xizmat emasmiz. Premium
+        yondashuv, tezkor aloqa, qulay bron va yuqori darajadagi servis bilan
+        har bir safarni ancha yengil va yoqimli qilamiz.
       </p>
 
       <ul className="mb-10 space-y-5">
@@ -53,7 +52,7 @@ const RentaxText = () => {
         href="/about"
         className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-[#edb458] px-8 py-4 text-sm font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-white hover:text-[#edb458]"
       >
-        Read More
+        Batafsil
         <svg
           className="h-4 w-4"
           viewBox="0 0 24 24"

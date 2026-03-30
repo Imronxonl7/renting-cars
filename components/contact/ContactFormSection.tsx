@@ -55,7 +55,7 @@ const ContactFormSection = () => {
         <div className="grid gap-8 md:gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.96fr)] lg:items-start xl:gap-12">
           <div className="min-w-0">
             <h2 className="text-[clamp(2.1rem,6vw,3rem)] font-black tracking-[-0.03em] text-white">
-              Get In Touch
+              Bizga yozing
             </h2>
 
             <form onSubmit={handleSubmit} className="mt-7 space-y-4 sm:mt-8">
@@ -64,7 +64,7 @@ const ContactFormSection = () => {
                   type="text"
                   value={formValues.name}
                   onChange={handleChange('name')}
-                  placeholder="Your Name*"
+                  placeholder="Ismingiz*"
                   required
                   className="h-13 rounded-xl border border-white/8 bg-[#252421] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/36 focus:border-[#edb458] sm:h-14 sm:px-5 sm:text-base"
                 />
@@ -72,7 +72,7 @@ const ContactFormSection = () => {
                   type="email"
                   value={formValues.email}
                   onChange={handleChange('email')}
-                  placeholder="Your Email*"
+                  placeholder="Email manzilingiz*"
                   required
                   className="h-13 rounded-xl border border-white/8 bg-[#252421] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/36 focus:border-[#edb458] sm:h-14 sm:px-5 sm:text-base"
                 />
@@ -83,7 +83,7 @@ const ContactFormSection = () => {
                   type="text"
                   value={formValues.number}
                   onChange={handleChange('number')}
-                  placeholder="Your Number*"
+                  placeholder="Telefon raqamingiz*"
                   required
                   className="h-13 rounded-xl border border-white/8 bg-[#252421] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/36 focus:border-[#edb458] sm:h-14 sm:px-5 sm:text-base"
                 />
@@ -91,7 +91,7 @@ const ContactFormSection = () => {
                   type="text"
                   value={formValues.subject}
                   onChange={handleChange('subject')}
-                  placeholder="Subject*"
+                  placeholder="Mavzu*"
                   required
                   className="h-13 rounded-xl border border-white/8 bg-[#252421] px-4 text-sm text-white outline-none transition-colors placeholder:text-white/36 focus:border-[#edb458] sm:h-14 sm:px-5 sm:text-base"
                 />
@@ -100,7 +100,7 @@ const ContactFormSection = () => {
               <textarea
                 value={formValues.message}
                 onChange={handleChange('message')}
-                placeholder="Message*"
+                placeholder="Xabaringiz*"
                 rows={7}
                 required
                 className="min-h-44 w-full rounded-xl border border-white/8 bg-[#252421] px-4 py-4 text-sm text-white outline-none transition-colors placeholder:text-white/36 focus:border-[#edb458] sm:min-h-52 sm:px-5 sm:text-base"
@@ -110,7 +110,7 @@ const ContactFormSection = () => {
                 type="submit"
                 className="inline-flex w-full items-center justify-center rounded-full bg-[#edb458] px-8 py-3.5 text-sm font-bold text-[#1f1e1d] transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:px-10 sm:py-4 sm:text-base"
               >
-                Submit
+                Yuborish
               </button>
             </form>
           </div>
@@ -118,7 +118,7 @@ const ContactFormSection = () => {
           <div className="overflow-hidden rounded-[22px] border border-white/8 bg-[#252421] p-2 shadow-[0_18px_42px_rgba(0,0,0,0.24)] sm:rounded-[26px]">
             <div className="overflow-hidden rounded-[20px]">
               <iframe
-                title="Drivora location map"
+                title="Drivora manzil xaritasi"
                 src="https://www.google.com/maps?q=Tashkent%20City%20Park&output=embed"
                 className="h-72 w-full border-0 sm:h-88 md:h-96 lg:h-124"
                 loading="lazy"

@@ -22,8 +22,8 @@ const HeaderImage = () => {
             RENTAX
           </p>
           <h1 className="text-[clamp(2.8rem,6vw,5rem)] font-black leading-none tracking-[-0.04em]">
-            <span className="text-white">About </span>
-            <span className="text-[#edb458]">Us</span>
+            <span className="text-white">Biz </span>
+            <span className="text-[#edb458]">haqimizda</span>
           </h1>
         </div>
       </Container>

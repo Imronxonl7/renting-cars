@@ -10,7 +10,7 @@ const TeamsHeroHeaderImage = () => {
     <section className="relative min-h-[72svh] overflow-hidden bg-[#1f1e1d] text-white sm:min-h-[78svh]">
       <Image
         src={TeamHeroImage}
-        alt="Teams hero"
+        alt="Jamoa sahifasi foni"
         fill
         priority
         className="object-cover"

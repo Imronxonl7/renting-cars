@@ -3,39 +3,39 @@ import Container from '../Container'
 const services = [
   {
     id: '01',
-    title: 'Corporate Car Rental',
+    title: 'Korporativ mashina ijarasi',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'Kompaniyalar uchun kunlik, haftalik yoki oylik asosda qulay tariflarda xizmat avtomobillarini taqdim etamiz.',
   },
   {
     id: '02',
-    title: 'Car Rental with Driver',
+    title: 'Haydovchi bilan ijara',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'Shahar ichida uchrashuv, mehmon kutib olish yoki maxsus tadbirlar uchun tajribali haydovchi bilan avtomobil ajratiladi.',
   },
   {
     id: '03',
-    title: 'Airport Transfer',
+    title: 'Aeroport transfer xizmati',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'Aeroportdan mehmonxona, ofis yoki uy manziliga o‘z vaqtida va qulay transfer xizmati yo‘lga qo‘yilgan.',
   },
   {
     id: '04',
-    title: 'Fleet Leasing',
+    title: 'Avtoparkni uzoq muddatli ijaraga berish',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'Bir nechta avtomobil kerak bo‘ladigan bizneslar uchun barqaror xizmat, texnik nazorat va moslashuvchan shartlar taklif qilamiz.',
   },
   {
     id: '05',
-    title: 'VIP Transfer',
+    title: 'VIP transfer',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'Muhim mehmonlar, delegatsiyalar va premium safarlar uchun yuqori darajadagi qulaylikka ega transfer xizmati mavjud.',
   },
   {
     id: '06',
-    title: 'Corporate Car Rental',
+    title: 'To‘y va tadbirlar uchun mashina',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'To‘y, foto sessiya, biznes forum va boshqa marosimlar uchun ko‘rkam va nufuzli avtomobillar tanlab beriladi.',
   },
 ]
 
@@ -49,11 +49,11 @@ const ServiceCard = () => {
               <div
                 key={service.id}
                 className={`relative bg-[#1C1C1C] rounded-2xl p-6 text-white overflow-hidden ${
-                  index === 0 ? 'h-[200px]' : 'min-h-[200px]'
+                  index === 0 ? 'h-50' : 'min-h-50'
                 }`}
               >
-                <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">
+                <h3 className="mb-2 line-clamp-2 text-lg font-semibold">{service.title}</h3>
+                <p className="line-clamp-4 text-sm leading-relaxed text-gray-400">
                   {service.description}
                 </p>
 

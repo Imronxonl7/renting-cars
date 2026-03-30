@@ -3,21 +3,21 @@ import Container from '../Container'
 const otherServices = [
   {
     id: '01',
-    title: 'Daily Car Rental',
+    title: 'Kunlik avto ijara',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'Qisqa muddatli safarlar uchun qulay, tezkor va ishonchli kunlik avto ijara xizmati.',
   },
   {
     id: '02',
-    title: 'Monthly Car Rental',
+    title: 'Oylik avto ijara',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'Uzoqroq foydalanish uchun qulay tarif va premium xizmat bilan oylik yechim.',
   },
   {
     id: '03',
-    title: 'Annual Car Rental',
+    title: 'Yillik avto ijara',
     description:
-      'Lorem ipsum dolor sit amet the consectetur adipiscing elit entesque hendrerit elit nisan lacinia feugiat nunc eu aucton.',
+      'Yil davomida foydalanish uchun alohida shartlar va barqaror premium xizmat.',
   },
 ]
 
@@ -29,10 +29,10 @@ const OtherService = () => {
           <div className="mb-16 flex flex-col items-center text-center">
             <span className="mb-6 h-14 w-px bg-[#edb458]" />
             <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.38em] text-[#edb458]">
-              What We Do
+              Bizning xizmatlar
             </p>
             <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl">
-              Other Services
+              Qo‘shimcha xizmatlar
             </h2>
           </div>
 
@@ -40,9 +40,9 @@ const OtherService = () => {
             {otherServices.map((service) => (
               <div
                 key={service.id}
-                className="relative min-h-[200px] overflow-hidden rounded-2xl bg-[#1C1C1C] p-6 text-white"
+                className="relative min-h-50 overflow-hidden rounded-2xl bg-[#1C1C1C] p-6 text-white"
               >
-                <h3 className="mb-2 text-lg font-semibold">{service.title}</h3>
+                <h3 className="mb-2 line-clamp-2 text-lg font-semibold">{service.title}</h3>
                 <p className="text-sm leading-relaxed text-gray-400">
                   {service.description}
                 </p>

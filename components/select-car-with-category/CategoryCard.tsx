@@ -31,7 +31,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
 
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 px-5 pb-5">
         <p className="text-xs font-semibold tracking-[0.28em] text-[#edb458] uppercase">
-          Explore Category
+          Kategoriyani ko‘rish
         </p>
         <Link
           href={`/cars?category=${encodeURIComponent(category.id)}`}

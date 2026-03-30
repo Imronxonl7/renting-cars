@@ -64,10 +64,10 @@ const FleetCard = ({
               active ? 'text-white/68 opacity-100' : 'text-white/54 opacity-80'
             }`}
           >
-            <Spec label="Seats" value={String(car.seats ?? '-')} />
-            <Spec label="Doors" value={String(car.doors ?? '-')} />
-            <Spec label="Drive" value={car.transmission || '-'} />
-            <Spec label="Fuel" value={car.fuel_type || '-'} />
+            <Spec label="O‘rindiq" value={String(car.seats ?? '-')} />
+            <Spec label="Eshik" value={String(car.doors ?? '-')} />
+            <Spec label="Uzatma" value={car.transmission || '-'} />
+            <Spec label="Yoqilg‘i" value={car.fuel_type || '-'} />
           </div>
         </div>
 
@@ -76,13 +76,13 @@ const FleetCard = ({
             href={`/cars/${encodeURIComponent(car.id)}`}
             className="inline-flex items-center cursor-pointer rounded-full bg-[#edb458] px-5 py-2.5 text-sm font-bold text-[#1f1e1d] transition-colors duration-300 hover:bg-[#ddb04b]"
           >
-            Details
+            Batafsil
           </Link>
           <p className="shrink-0 text-right text-[#edb458]">
             <span className="text-[30px] font-black leading-none">
               ${formatPrice(car.price_per_day)}
             </span>
-            <span className="text-base font-semibold text-white/80">/day</span>
+            <span className="text-base font-semibold text-white/80">/kun</span>
           </p>
         </div>
       </div>

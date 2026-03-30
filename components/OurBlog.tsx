@@ -7,10 +7,10 @@ const OurBlog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "The Thrill of the Open Road: Why Convertible Rentals Are Perfect for Dubai's Coastline",
-      date: "24 Feb, 2024",
-      author: "By Renting Cars",
-      excerpt: "Discover why renting a convertible in Dubai is the ultimate way to experience the city's stunning beaches and vibrant nightlife.",
+      title: "Ochiq yo‘l zavqi: nega kabriolet ijarasi sayohat uchun zo‘r tanlov",
+      date: "24 Fev, 2024",
+      author: "Renting Cars",
+      excerpt: "Kabriolet ijarasi nima uchun shahar va sayohat zavqini yanada kuchaytirishini bilib oling.",
       image: "/8c76f296821f23f867ec938c7ef2d61c.jpg",
       carType: "convertible",
       carColor: "#e8c84b",
@@ -20,10 +20,10 @@ const OurBlog = () => {
     },
     {
       id: 2,
-      title: "Dubai's Ultimate Road Trip: From Desert Dunes to City Lights",
-      date: "18 Feb, 2024",
-      author: "By Renting Cars",
-      excerpt: "Plan your perfect Dubai road trip with our guide to the best routes, hidden gems, and must-visit spots.",
+      title: "Mukammal road trip: uzun yo‘l uchun eng yaxshi premium marshrutlar",
+      date: "18 Fev, 2024",
+      author: "Renting Cars",
+      excerpt: "Eng yaxshi yo‘nalishlar, qiziqarli joylar va foydali tavsiyalar bilan ideal safarni rejalashtiring.",
       image: "/850aff70b907cac84b8d5dbcd74b1427.jpg",
       carType: "hypercar",
       carColor: "#080808",
@@ -33,10 +33,10 @@ const OurBlog = () => {
     },
     {
       id: 3,
-      title: "Family Fun in Dubai: The Best SUVs for Exploring the City",
-      date: "12 Feb, 2024",
-      author: "By Renting Cars",
-      excerpt: "Traveling with family? Discover the perfect SUV rental for your Dubai adventure, combining space, safety, and style.",
+      title: "Oilaviy sayohat uchun eng yaxshi SUV avtomobillar",
+      date: "12 Fev, 2024",
+      author: "Renting Cars",
+      excerpt: "Kenglik, xavfsizlik va qulaylikni birlashtirgan SUV’lar bilan oilaviy safarni yanada yoqimli qiling.",
       image: "/ba58c78af4c120bc525d487a45b91a13.jpg",
       carType: "suv",
       carColor: "#e8c84b",
@@ -57,10 +57,10 @@ const OurBlog = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <p className="mb-3 text-xs font-bold tracking-[0.3em] text-[#edb458] uppercase">
-            · Our Blog ·
+            · Bizning blog ·
           </p>
           <h2 className="text-4xl font-black tracking-[-0.02em] text-white md:text-5xl">
-            Latest <span className="text-[#edb458]">News</span>
+            So‘nggi <span className="text-[#edb458]">yangiliklar</span>
           </h2>
         </div>
 
@@ -110,10 +110,10 @@ const OurBlog = () => {
                                             <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                             </svg>
-                                            {post.author}
+                                            Muallif: {post.author}
                                         </span>
                                     </div>
-                                    <h3 className="text-white text-sm font-semibold leading-snug group-hover:text-[#edb458] transition-colors duration-200">
+                                    <h3 className="line-clamp-3 text-white text-sm font-semibold leading-snug group-hover:text-[#edb458] transition-colors duration-200">
                                         {post.title}
                                     </h3>
                                 </div>
